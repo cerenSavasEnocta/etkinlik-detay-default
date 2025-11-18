@@ -5,6 +5,7 @@ import App from "./App";
 const rootElement = document.getElementById("root");
 if (rootElement !== null) {
 	const root = createRoot(rootElement);
+	console.log("App mounting to #root...");
 	root.render(<App />);
 }
 
