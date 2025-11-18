@@ -87,7 +87,7 @@ export function MainContent({
   };
 
   return (
-    <div className="bg-[rgb(249,249,249)]">
+    <div className="bg-[rgb(249,249,249)] h-full flex flex-col">
       {/* İçerik Bilgisi */}
       <div
         className="px-4 py-4 border-b border-gray-200"
@@ -194,7 +194,7 @@ export function MainContent({
       )}
 
       {/* Sekmeler */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-gray-200 mt-auto">
         <div
           className="flex gap-6 px-6"
           style={{
