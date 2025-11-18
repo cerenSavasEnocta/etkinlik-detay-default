@@ -176,9 +176,13 @@ export function OverviewPanel() {
               </span>
             </div>
             <div className="flex-1">
-              <span className="text-sm text-gray-600">
+              <a
+                href="#!"
+                className="text-sm text-blue-600 hover:underline"
+                style={{ cursor: "pointer" }}
+              >
                 Eğitim
-              </span>
+              </a>
             </div>
           </div>
           <div className="flex items-start">
@@ -189,9 +193,13 @@ export function OverviewPanel() {
               </span>
             </div>
             <div className="flex-1">
-              <span className="text-sm text-gray-600">
+              <a
+                href="#!"
+                className="text-sm text-blue-600 hover:underline"
+                style={{ cursor: "pointer" }}
+              >
                 Gelişim Planı
-              </span>
+              </a>
             </div>
           </div>
           <div className="flex items-start">
@@ -203,10 +211,9 @@ export function OverviewPanel() {
             </div>
             <div className="flex-1">
               <a
-                href="https://emocio.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-gray-600 hover:text-blue-600 hover:underline transition-colors cursor-pointer"
+                href="#!"
+                className="text-sm text-blue-600 hover:underline"
+                style={{ cursor: "pointer" }}
               >
                 Enocta
               </a>
