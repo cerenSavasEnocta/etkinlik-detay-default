@@ -34,11 +34,14 @@ export default function App() {
   const [currentContentId, setCurrentContentId] = useState('2-1');
   const [completedContents, setCompletedContents] = useState<Set<string>>(new Set());
   const [contentProgress, setContentProgress] = useState<Record<string, number>>({});
+  // Başarı ekranından geri dönüldüğünde, aynı durumda otomatik tekrar açılmasını bir kez engelle
+  const [suppressSuccessOnce, setSuppressSuccessOnce] = useState(false);
   
   const flatContent = useMemo(() => flattenContent(contentData), []);
   
   const currentIndex = flatContent.findIndex(item => item.id === currentContentId);
   const currentItem = flatContent[currentIndex];
+  const lastItemId = flatContent.length > 0 ? flatContent[flatContent.length - 1].id : undefined;
 
   // Tüm içeriklerin tamamlanıp tamamlanmadığını kontrol et
   const isAllCompleted = useMemo(() => {
@@ -150,10 +153,23 @@ export default function App() {
 
   // Tüm içerikler tamamlandığında başarı ekranını göster
   useEffect(() => {
-    if (isAllCompleted && !showSuccessPage) {
+    if (isAllCompleted && !showSuccessPage && !suppressSuccessOnce) {
       setShowSuccessPage(true);
     }
-  }, [isAllCompleted, showSuccessPage]);
+  }, [isAllCompleted, showSuccessPage, suppressSuccessOnce]);
+
+  // Başarı ekranından geri dönünce bastırmayı etkinleştir
+  const handleCloseSuccess = () => {
+    setShowSuccessPage(false);
+    setSuppressSuccessOnce(true);
+  };
+
+  // Son içerikten ayrılınca (başka bir içeriğe geçilince) bastırmayı sıfırla
+  useEffect(() => {
+    if (currentContentId !== lastItemId) {
+      setSuppressSuccessOnce(false);
+    }
+  }, [currentContentId, lastItemId]);
 
   return (
     <>
@@ -163,7 +179,7 @@ export default function App() {
           hasRated={hasRated}
           hasBookmarked={hasBookmarked}
           onRatingComplete={() => setHasRated(true)}
-          onClose={() => setShowSuccessPage(false)}
+          onClose={handleCloseSuccess}
           totalScore={100}
           totalTime="2:59:05"
         />
