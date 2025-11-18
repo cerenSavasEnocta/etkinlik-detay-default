@@ -1,5 +1,6 @@
-import { ThumbsUp, ThumbsDown, Send, Sparkles } from "lucide-react";
+import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import aiIcon from "figma:asset/5693cf52c37b3b4b9945d562801c0f3e7cfaa19e.png";
 
 interface Message {
   id: string;
@@ -185,7 +186,11 @@ export function AssistantTab() {
                           "linear-gradient(290deg, #525BCD 0%, #6C42B4 23.67%, #92399A 45.7%, #CB3D7A 68.04%, #E5863E 91.03%)",
                       }}
                     >
-                      <Sparkles className="w-4 h-4 text-purple-600" />
+                      <img
+                        src={aiIcon}
+                        alt="AI"
+                        className="w-4 h-4"
+                      />
                     </div>
                     <div className="flex-1">
                       <div>

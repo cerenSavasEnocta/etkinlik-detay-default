@@ -1,4 +1,5 @@
 import { useState } from "react";
+import bannerImage from "figma:asset/24e9cc97a7b30938d5428ba7d8a8fe3c833f73d8.png";
 import { CompletionModal } from "./CompletionModal";
 import { Check } from "lucide-react";
 

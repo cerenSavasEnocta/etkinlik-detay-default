@@ -21,7 +21,7 @@ import { ClassroomContent } from "./ClassroomContent";
 import { ELearningContent } from "./ELearningContent";
 import { TaskContent } from "./TaskContent";
 import { ExamContent } from "./ExamContent";
-import { Sparkles } from "lucide-react";
+import assistantIcon from "figma:asset/80779279e75cdac19c322836e71ea305eeb67024.png";
 
 type ContentType =
   | "video"
@@ -214,7 +214,11 @@ export function MainContent({
             }`}
             style={{ cursor: "pointer" }}
           >
-            <Sparkles className="w-4 h-4" />
+            <img
+              src={assistantIcon}
+              alt=""
+              className="w-4 h-[18px]"
+            />
             Asistan
           </button>
           <button

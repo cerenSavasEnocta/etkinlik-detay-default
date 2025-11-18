@@ -1,3 +1,7 @@
+import image_8a05e1e9c1e300378041b71bf9fd5cb72dceebdb from "figma:asset/8a05e1e9c1e300378041b71bf9fd5cb72dceebdb.png";
+import image_87e256ae2ae691babc472a7d346f958e82e4c6f6 from "figma:asset/87e256ae2ae691babc472a7d346f958e82e4c6f6.png";
+import image_8a05e1e9c1e300378041b71bf9fd5cb72dceebdb from "figma:asset/8a05e1e9c1e300378041b71bf9fd5cb72dceebdb.png";
+import image_87e256ae2ae691babc472a7d346f958e82e4c6f6 from "figma:asset/87e256ae2ae691babc472a7d346f958e82e4c6f6.png";
 import { useState } from "react";
 import {
   Star,
@@ -7,10 +11,6 @@ import {
   ArrowLeft,
   Clock,
   Users,
-  Check,
-  CheckCircle,
-  Trophy,
-  Smile,
 } from "lucide-react";
 import { MdStar } from "react-icons/md";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -22,6 +22,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog";
+import { Check } from "lucide-react";
+import trophyImage from "figma:asset/897e04cf8081a1203b097aab11a1dbc27e681a12.png";
+import emojiCompleted from "figma:asset/6113ae34615b92f757269e83d045a08e6d4a57c6.png";
+import bannerImage from "figma:asset/55e3e3fc503b94b7e1a90c980ad27d04ba2b98ee.png";
+import ratingIcon from "figma:asset/80449cd910d60ae02a059de1aab155f241243162.png";
+import checkIcon from "figma:asset/8e0b72d0d1bc63bb93bf7495863d1e7efc13e5e7.png";
 
 interface SuccessPageProps {
   hasRated: boolean;
@@ -170,17 +176,17 @@ export function SuccessPage({
           <div className="mx-auto">
             {/* Banner Image */}
             <div
-              className="relative overflow-hidden flex items-center justify-center"
-              style={{ 
-                borderRadius: 0,
-                minHeight: "300px",
-                background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-              }}
+              className="relative overflow-hidden"
+              style={{ borderRadius: 0 }}
             >
-              <div className="text-center text-white">
-                <Trophy className="w-24 h-24 mx-auto mb-4" />
-                <h1 className="text-5xl mb-2">🎉</h1>
-              </div>
+              <img
+                src={bannerImage}
+                alt="Success Banner"
+                className="w-full h-auto object-cover block"
+                style={{
+                  borderRadius: 0,
+                }}
+              />
             </div>
 
             {/* Score and Time - 20px below banner */}
@@ -280,15 +286,25 @@ export function SuccessPage({
                 }}
               >
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
-                    <Smile className="w-7 h-7 text-white" />
-                  </div>
+                  <img
+                    src={
+                      image_87e256ae2ae691babc472a7d346f958e82e4c6f6
+                    }
+                    alt="Completed"
+                    className="w-12 h-12"
+                  />
                 </div>
                 <p className="text-sm text-gray-900 flex-1">
                   Eğitimi tamamladın!
                 </p>
                 <div className="flex-shrink-0">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <img
+                    src={
+                      image_8a05e1e9c1e300378041b71bf9fd5cb72dceebdb
+                    }
+                    alt="Check"
+                    className="w-6 h-6"
+                  />
                 </div>
               </div>
 
@@ -309,13 +325,19 @@ export function SuccessPage({
               >
                 <div className="flex-shrink-0">
                   {hasRated ? (
-                    <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
-                      <Smile className="w-7 h-7 text-white" />
-                    </div>
+                    <img
+                      src={
+                        image_87e256ae2ae691babc472a7d346f958e82e4c6f6
+                      }
+                      alt="Rated"
+                      className="w-12 h-12"
+                    />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center">
-                      <Star className="w-7 h-7 text-yellow-500" />
-                    </div>
+                    <img
+                      src={ratingIcon}
+                      alt="Rating"
+                      className="w-12 h-12"
+                    />
                   )}
                 </div>
                 <div className="flex-1 flex items-center justify-between">
@@ -338,7 +360,13 @@ export function SuccessPage({
                 </div>
                 {hasRated && (
                   <div className="flex-shrink-0">
-                    <CheckCircle className="w-6 h-6 text-green-600" />
+                    <img
+                      src={
+                        image_8a05e1e9c1e300378041b71bf9fd5cb72dceebdb
+                      }
+                      alt="Check"
+                      className="w-6 h-6"
+                    />
                   </div>
                 )}
               </div>
