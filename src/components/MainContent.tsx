@@ -165,33 +165,35 @@ export function MainContent({
       </div>
 
       {/* İçerik Alanı - contentType'a göre gösterim */}
-      {contentType === "video" && (
-        <VideoPlayer onComplete={onContentComplete} />
-      )}
-      {contentType === "podcast" && (
-        <PodcastPlayer onComplete={onContentComplete} />
-      )}
-      {contentType === "virtual-class" && (
-        <VirtualClassContent onComplete={onContentComplete} />
-      )}
-      {contentType === "classroom" && (
-        <ClassroomContent onComplete={onContentComplete} />
-      )}
-      {contentType === "html" && (
-        <HtmlContent onComplete={onContentComplete} />
-      )}
-      {contentType === "file" && (
-        <FileContent onComplete={onContentComplete} />
-      )}
-      {contentType === "elearning" && (
-        <ELearningContent onComplete={onContentComplete} />
-      )}
-      {contentType === "task" && (
-        <TaskContent onComplete={onContentComplete} />
-      )}
-      {contentType === "exam" && (
-        <ExamContent onComplete={onContentComplete} />
-      )}
+      <div className="flex-1 overflow-auto">
+        {contentType === "video" && (
+          <VideoPlayer onComplete={onContentComplete} />
+        )}
+        {contentType === "podcast" && (
+          <PodcastPlayer onComplete={onContentComplete} />
+        )}
+        {contentType === "virtual-class" && (
+          <VirtualClassContent onComplete={onContentComplete} />
+        )}
+        {contentType === "classroom" && (
+          <ClassroomContent onComplete={onContentComplete} />
+        )}
+        {contentType === "html" && (
+          <HtmlContent onComplete={onContentComplete} />
+        )}
+        {contentType === "file" && (
+          <FileContent onComplete={onContentComplete} />
+        )}
+        {contentType === "elearning" && (
+          <ELearningContent onComplete={onContentComplete} />
+        )}
+        {contentType === "task" && (
+          <TaskContent onComplete={onContentComplete} />
+        )}
+        {contentType === "exam" && (
+          <ExamContent onComplete={onContentComplete} />
+        )}
+      </div>
 
       {/* Sekmeler */}
       <div className="border-b border-gray-200 mt-auto">
