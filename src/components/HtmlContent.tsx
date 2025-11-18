@@ -24,8 +24,8 @@ export function HtmlContent({ onComplete }: HtmlContentProps) {
     >
       {/* HTML İçerik Alanı */}
       <div
-        className="overflow-y-auto bg-white rounded-sm border border-gray-200 p-6"
-        style={{ height: "100%", maxWidth: "1100px" }}
+        className="overflow-y-scroll bg-white rounded-sm border border-gray-200 p-6"
+        style={{ maxHeight: "65vh", maxWidth: "1100px" }}
       >
         <div className="prose max-w-none">
           <h2 className="text-gray-900 mb-4">

@@ -87,7 +87,7 @@ export function MainContent({
   };
 
   return (
-    <div className="bg-[rgb(249,249,249)] h-full flex flex-col">
+    <div className="bg-[rgb(249,249,249)]">
       {/* İçerik Bilgisi */}
       <div
         className="px-4 py-4 border-b border-gray-200"
@@ -165,38 +165,36 @@ export function MainContent({
       </div>
 
       {/* İçerik Alanı - contentType'a göre gösterim */}
-      <div className="flex-1 overflow-auto" style={{ minHeight: 0 }}>
-        {contentType === "video" && (
-          <VideoPlayer onComplete={onContentComplete} />
-        )}
-        {contentType === "podcast" && (
-          <PodcastPlayer onComplete={onContentComplete} />
-        )}
-        {contentType === "virtual-class" && (
-          <VirtualClassContent onComplete={onContentComplete} />
-        )}
-        {contentType === "classroom" && (
-          <ClassroomContent onComplete={onContentComplete} />
-        )}
-        {contentType === "html" && (
-          <HtmlContent onComplete={onContentComplete} />
-        )}
-        {contentType === "file" && (
-          <FileContent onComplete={onContentComplete} />
-        )}
-        {contentType === "elearning" && (
-          <ELearningContent onComplete={onContentComplete} />
-        )}
-        {contentType === "task" && (
-          <TaskContent onComplete={onContentComplete} />
-        )}
-        {contentType === "exam" && (
-          <ExamContent onComplete={onContentComplete} />
-        )}
-      </div>
+      {contentType === "video" && (
+        <VideoPlayer onComplete={onContentComplete} />
+      )}
+      {contentType === "podcast" && (
+        <PodcastPlayer onComplete={onContentComplete} />
+      )}
+      {contentType === "virtual-class" && (
+        <VirtualClassContent onComplete={onContentComplete} />
+      )}
+      {contentType === "classroom" && (
+        <ClassroomContent onComplete={onContentComplete} />
+      )}
+      {contentType === "html" && (
+        <HtmlContent onComplete={onContentComplete} />
+      )}
+      {contentType === "file" && (
+        <FileContent onComplete={onContentComplete} />
+      )}
+      {contentType === "elearning" && (
+        <ELearningContent onComplete={onContentComplete} />
+      )}
+      {contentType === "task" && (
+        <TaskContent onComplete={onContentComplete} />
+      )}
+      {contentType === "exam" && (
+        <ExamContent onComplete={onContentComplete} />
+      )}
 
       {/* Sekmeler */}
-      <div className="border-b border-gray-200 mt-auto">
+      <div className="border-b border-gray-200">
         <div
           className="flex gap-6 px-6"
           style={{

@@ -43,7 +43,7 @@ export function ExamContent({ onComplete }: ExamContentProps) {
         style={{
           maxWidth: "1100px",
           width: "100%",
-          height: "100%",
+          maxHeight: "77vh",
           overflowY: "auto",
         }}
       >

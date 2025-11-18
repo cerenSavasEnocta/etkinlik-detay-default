@@ -108,7 +108,7 @@ export function VirtualClassContent({ onComplete }: VirtualClassContentProps) {
       style={{ backgroundColor: "#f9f9f9" }}
     >
       {/* Ana Container */}
-      <div className="w-full" style={{ maxWidth: "1100px", height: "100%", overflowY: "auto" }}>
+      <div className="w-full" style={{ maxWidth: "1100px", maxHeight: "77vh", overflowY: "auto" }}>
         {/* Banner Görseli */}
         <div className="relative w-full h-[150px] overflow-hidden mb-6">
           <ImageWithFallback

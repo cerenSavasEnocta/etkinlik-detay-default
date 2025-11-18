@@ -185,7 +185,7 @@ export default function App() {
         />
       )}
 
-      <div className="flex flex-col bg-gray-50 overflow-y-auto" style={{ height: '100dvh' }}>
+      <div className="flex flex-col h-screen bg-gray-50 overflow-y-auto">
         <Header
           onToggleContentTree={toggleContentTree}
           onToggleOverview={toggleOverview}
