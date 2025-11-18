@@ -1,7 +1,5 @@
-import image_8a05e1e9c1e300378041b71bf9fd5cb72dceebdb from "figma:asset/8a05e1e9c1e300378041b71bf9fd5cb72dceebdb.png";
-import image_87e256ae2ae691babc472a7d346f958e82e4c6f6 from "figma:asset/87e256ae2ae691babc472a7d346f958e82e4c6f6.png";
-import image_8a05e1e9c1e300378041b71bf9fd5cb72dceebdb from "figma:asset/8a05e1e9c1e300378041b71bf9fd5cb72dceebdb.png";
-import image_87e256ae2ae691babc472a7d346f958e82e4c6f6 from "figma:asset/87e256ae2ae691babc472a7d346f958e82e4c6f6.png";
+import image_8a05e1e9c1e300378041b71bf9fd5cb72dceebdb from "@/assets/8a05e1e9c1e300378041b71bf9fd5cb72dceebdb.png";
+import image_87e256ae2ae691babc472a7d346f958e82e4c6f6 from "@/assets/87e256ae2ae691babc472a7d346f958e82e4c6f6.png";
 import { useState } from "react";
 import {
   Star,
@@ -23,11 +21,10 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import { Check } from "lucide-react";
-import trophyImage from "figma:asset/897e04cf8081a1203b097aab11a1dbc27e681a12.png";
-import emojiCompleted from "figma:asset/6113ae34615b92f757269e83d045a08e6d4a57c6.png";
-import bannerImage from "figma:asset/55e3e3fc503b94b7e1a90c980ad27d04ba2b98ee.png";
-import ratingIcon from "figma:asset/80449cd910d60ae02a059de1aab155f241243162.png";
-import checkIcon from "figma:asset/8e0b72d0d1bc63bb93bf7495863d1e7efc13e5e7.png";
+import trophyImage from "@/assets/897e04cf8081a1203b097aab11a1dbc27e681a12.png";
+import emojiCompleted from "@/assets/6113ae34615b92f757269e83d045a08e6d4a57c6.png";
+import bannerImage from "@/assets/55e3e3fc503b94b7e1a90c980ad27d04ba2b98ee.png";
+import ratingIcon from "@/assets/80449cd910d60ae02a059de1aab155f241243162.png";
 
 interface SuccessPageProps {
   hasRated: boolean;

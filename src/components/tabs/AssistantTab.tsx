@@ -1,6 +1,6 @@
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import aiIcon from "figma:asset/5693cf52c37b3b4b9945d562801c0f3e7cfaa19e.png";
+import aiIcon from "@/assets/5693cf52c37b3b4b9945d562801c0f3e7cfaa19e.png";
 
 interface Message {
   id: string;

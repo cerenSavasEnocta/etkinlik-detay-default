@@ -21,7 +21,7 @@ import { ClassroomContent } from "./ClassroomContent";
 import { ELearningContent } from "./ELearningContent";
 import { TaskContent } from "./TaskContent";
 import { ExamContent } from "./ExamContent";
-import assistantIcon from "figma:asset/80779279e75cdac19c322836e71ea305eeb67024.png";
+import assistantIcon from "@/assets/80779279e75cdac19c322836e71ea305eeb67024.png";
 
 type ContentType =
   | "video"
