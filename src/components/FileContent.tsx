@@ -33,7 +33,7 @@ export function FileContent({ onComplete }: FileContentProps) {
   return (
     <div className="relative px-6 py-6 flex flex-col items-center" style={{ backgroundColor: '#f9f9f9' }}>
       {/* Ana Container */}
-      <div className="w-full" style={{ maxWidth: '1100px' }}>
+      <div className="w-full" style={{ maxWidth: '1100px', maxHeight: '77vh', overflowY: 'auto' }}>
         {/* Banner Görseli */}
         <div className="relative w-full h-[150px] overflow-hidden mb-4">
           <ImageWithFallback

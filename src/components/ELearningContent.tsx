@@ -25,7 +25,7 @@ export function ELearningContent({ onComplete }: ELearningContentProps) {
     <>
       <div
         className="w-full mx-auto px-8 py-8"
-        style={{ maxWidth: "1100px", backgroundColor: "#f9f9f9" }}
+        style={{ maxWidth: "1100px", backgroundColor: "#f9f9f9", maxHeight: "77vh", overflowY: "auto" }}
       >
         {/* Banner */}
         <div
