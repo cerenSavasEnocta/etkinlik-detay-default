@@ -165,7 +165,7 @@ export function MainContent({
       </div>
 
       {/* İçerik Alanı - contentType'a göre gösterim */}
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto" style={{ minHeight: 0 }}>
         {contentType === "video" && (
           <VideoPlayer onComplete={onContentComplete} />
         )}
