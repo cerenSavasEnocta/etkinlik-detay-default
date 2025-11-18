@@ -182,6 +182,7 @@ export function SuccessPage({
                 className="w-full h-auto object-cover block"
                 style={{
                   borderRadius: 0,
+                  marginTop: "-50px",
                 }}
               />
             </div>
