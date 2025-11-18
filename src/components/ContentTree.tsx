@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -142,6 +142,18 @@ export function ContentTree({
   const [completedVideos, setCompletedVideos] = useState(1); // Simulates completed video count
 
   const selectedId = externalSelectedId || internalSelectedId;
+  // Seçili içerik bir modülün altındaysa (ör. 3-1), o modülü otomatik aç
+  useEffect(() => {
+    if (selectedId && selectedId.includes("-")) {
+      const parentId = selectedId.split("-")[0];
+      setExpandedItems((prev) => {
+        if (prev.has(parentId)) return prev;
+        const next = new Set(prev);
+        next.add(parentId);
+        return next;
+      });
+    }
+  }, [selectedId]);
 
   // Tüm içerikleri ve tamamlananları hesapla
   const calculateProgress = () => {
