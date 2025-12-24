@@ -5,6 +5,12 @@ import { MainContent } from "./components/MainContent";
 import { OverviewPanel } from "./components/OverviewPanel";
 import { AutoplayWidget } from "./components/AutoplayWidget";
 import { SuccessPage } from "./components/SuccessPage";
+import { hotjar } from '@hotjar/browser';
+
+const siteId = 6608177;
+const hotjarVersion = 6;
+
+hotjar.init(siteId, hotjarVersion);
 
 type SidebarState = "content-tree" | "overview" | null;
 type ContentType = 'video' | 'html' | 'virtual-class' | 'podcast' | 'classroom' | 'elearning' | 'task' | 'file' | 'exam';
