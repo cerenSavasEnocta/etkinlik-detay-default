@@ -35,7 +35,6 @@ export function ExamContent({ onComplete }: ExamContentProps) {
 
   return (
     <div
-      className="flex-1 overflow-y-auto"
       style={{ backgroundColor: "#F9F9F9" }}
     >
       <div
@@ -44,14 +43,16 @@ export function ExamContent({ onComplete }: ExamContentProps) {
           maxWidth: "1100px",
           width: "100%",
           maxHeight: "77vh",
+          minHeight: "77vh",
           overflowY: "auto",
+          paddingTop: "24px",
         }}
       >
         {/* Banner */}
         <div
           className="w-full relative overflow-hidden"
           style={{
-            height: "150px",
+            height: "200px",
             backgroundImage: `url('https://images.unsplash.com/photo-1758685848208-e108b6af94cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleGFtJTIwb25saW5lJTIwdGVzdCUyMGVkdWNhdGlvbnxlbnwxfHx8fDE3NjI4OTA0MjB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral')`,
             backgroundSize: "cover",
             backgroundPosition: "center",

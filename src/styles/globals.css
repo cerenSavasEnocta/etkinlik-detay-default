@@ -255,3 +255,12 @@ html {
   border: 2px solid white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* Global button radius */
+@layer base {
+  button,
+  [role="button"],
+  [data-slot="button"] {
+    border-radius: 2px !important;
+  }
+}

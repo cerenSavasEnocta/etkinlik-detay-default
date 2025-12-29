@@ -25,12 +25,12 @@ export function ELearningContent({ onComplete }: ELearningContentProps) {
     <>
       <div
         className="w-full mx-auto px-8 py-8"
-        style={{ maxWidth: "1100px", backgroundColor: "#f9f9f9", maxHeight: "77vh", overflowY: "auto" }}
+        style={{ maxWidth: "1100px", backgroundColor: "#f9f9f9", maxHeight: "77vh", minHeight: "77vh", paddingTop: "6vh" }}
       >
         {/* Banner */}
         <div
           className="w-full overflow-hidden"
-          style={{ height: "150px" }}
+          style={{ height: "200px" }}
         >
           <img
             src={bannerImage}

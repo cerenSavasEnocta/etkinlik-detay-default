@@ -108,7 +108,7 @@ export function VirtualClassContent({ onComplete }: VirtualClassContentProps) {
       style={{ backgroundColor: "#f9f9f9" }}
     >
       {/* Ana Container */}
-      <div className="w-full" style={{ maxWidth: "1100px", maxHeight: "77vh", overflowY: "auto" }}>
+      <div className="w-full" style={{ maxWidth: "1100px", maxHeight: "77vh", overflowY: "auto", position: "relative", minHeight: "77vh" }}>
         {/* Banner Görseli */}
         <div className="relative w-full h-[150px] overflow-hidden mb-6">
           <ImageWithFallback
@@ -119,7 +119,7 @@ export function VirtualClassContent({ onComplete }: VirtualClassContentProps) {
         </div>
 
         {/* Oturumlar Listesi */}
-        <div className="space-y-4">
+        <div className="space-y-4" style={{ paddingBottom:"80px" }}>
           {sessions.map((session) => (
             <div
               key={session.id}
@@ -233,7 +233,7 @@ export function VirtualClassContent({ onComplete }: VirtualClassContentProps) {
         </div>
 
         {/* TAMAMLA Butonu */}
-        <div className="flex items-center justify-center mt-6">
+        <div className="flex items-center justify-center mt-6" style={{ position: "sticky", bottom: "8%", backgroundColor: "#f9f9f9", width: "100%", padding: "16px 0px", justifyContent: "center" }}>
           <button
             onClick={handleComplete}
             className="bg-black text-white px-6 hover:bg-gray-800 transition-colors flex items-center gap-2"

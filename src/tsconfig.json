@@ -20,12 +20,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    /* Path mapping */
+    /* Path mapping - this tsconfig lives inside src, so map @/* to current dir */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./*"]
+    },
+    "types": ["react", "react-dom", "vite/client"]
   },
-  "include": ["src", "App.tsx", "components", "styles"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["./**/*"]
 }

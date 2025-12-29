@@ -5,12 +5,6 @@ import { MainContent } from "./components/MainContent";
 import { OverviewPanel } from "./components/OverviewPanel";
 import { AutoplayWidget } from "./components/AutoplayWidget";
 import { SuccessPage } from "./components/SuccessPage";
-import { hotjar } from '@hotjar/browser';
-
-const siteId = 6608177;
-const hotjarVersion = 6;
-
-hotjar.init(siteId, hotjarVersion);
 
 type SidebarState = "content-tree" | "overview" | null;
 type ContentType = 'video' | 'html' | 'virtual-class' | 'podcast' | 'classroom' | 'elearning' | 'task' | 'file' | 'exam';
@@ -67,6 +61,8 @@ export default function App() {
     duration: string;
     image?: string;
   } | null>(null);
+  // Autoplay widget, kapatılana kadar bastırma (mevcut içerik için)
+  const [suppressedAutoplayForContentId, setSuppressedAutoplayForContentId] = useState<string | null>(null);
   const [showSuccessPage, setShowSuccessPage] = useState(false);
   const [hasRated, setHasRated] = useState(false);
   const [hasBookmarked, setHasBookmarked] = useState(false);
@@ -119,6 +115,11 @@ export default function App() {
   };
 
   const handleContentComplete = (contentId: string) => {
+    // Eğer kullanıcı mevcut içerikte autoplay widget'ını kapattıysa,
+    // aynı içerik tamamlandığında widget'ı tekrar gösterme
+    if (suppressedAutoplayForContentId === contentId) {
+      return;
+    }
     setCompletedContents(prev => new Set(prev).add(contentId));
     setContentProgress(prev => ({ ...prev, [contentId]: 100 }));
     
@@ -135,6 +136,8 @@ export default function App() {
           duration: "10 dk", // Varsayılan süre, gerçek süre data'dan gelirse güncellenebilir
         });
         setShowAutoplay(true);
+        // Farklı bir içerik için tetiklendi; önceki bastırmayı kaldır
+        setSuppressedAutoplayForContentId(null);
       }, 1500);
     }
   };
@@ -257,6 +260,11 @@ export default function App() {
             autoplayDuration={10000}
             autoplayEnabled={autoplayEnabled}
             onAutoplayToggle={handleAutoplayToggle}
+            onClose={() => {
+              // Widget'ı kapat ve mevcut içerik için autoplay'i bastır
+              setShowAutoplay(false);
+              setSuppressedAutoplayForContentId(currentContentId);
+            }}
           />
         )}
       </div>

@@ -201,7 +201,7 @@ export function TaskContent({ onComplete }: TaskContentProps) {
               color: "#fff",
               cursor: !isNotesValid || isSent ? "not-allowed" : "pointer",
               borderRadius: "2px",
-              opacity: !isNotesValid || isSent ? 0.6 : 1,
+              opacity: !isNotesValid || isSent ? 1 : 1,
               height: "40px",
               display: "flex",
               alignItems: "center",
@@ -209,7 +209,7 @@ export function TaskContent({ onComplete }: TaskContentProps) {
             }}
           >
             {isSent && <Check className="w-5 h-5" />}
-            {isSent ? "GÖNDERİLDİ" : "GÖNDER"}
+            {isSent ? "TAMAMLANDI" : "TAMAMLA"}
           </button>
         </div>
       </div>

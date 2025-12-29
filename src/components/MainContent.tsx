@@ -87,7 +87,7 @@ export function MainContent({
   };
 
   return (
-    <div className="bg-[rgb(249,249,249)]">
+    <div className="min-h-screen flex flex-col bg-[rgb(249,249,249)]">
       {/* İçerik Bilgisi */}
       <div
         className="px-4 py-4 border-b border-gray-200"
@@ -140,6 +140,7 @@ export function MainContent({
               }`}
               style={{
                 cursor: hasPrevious ? "pointer" : "not-allowed",
+                backgroundColor: hasPrevious ? "#fff" : "transparent",
               }}
             >
               <ChevronLeft className="w-4 h-4" />
@@ -155,6 +156,7 @@ export function MainContent({
               }`}
               style={{
                 cursor: hasNext ? "pointer" : "not-allowed",
+                backgroundColor: hasNext ? "#fff" : "transparent",
               }}
             >
               <span>İLERİ</span>
@@ -194,7 +196,7 @@ export function MainContent({
       )}
 
       {/* Sekmeler */}
-      <div className="border-b border-gray-200">
+      <div className="border-t border-gray-200 mt-auto sticky bottom-0 z-10 bg-[rgb(249,249,249)]">
         <div
           className="flex gap-6 px-6"
           style={{

@@ -25,7 +25,7 @@ export function HtmlContent({ onComplete }: HtmlContentProps) {
       {/* HTML İçerik Alanı */}
       <div
         className="overflow-y-scroll bg-white rounded-sm border border-gray-200 p-6"
-        style={{ maxHeight: "65vh", maxWidth: "1100px" }}
+        style={{ maxHeight: "77vh", maxWidth: "1100px", position: "relative" }}
       >
         <div className="prose max-w-none">
           <h2 className="text-gray-900 mb-4">
@@ -116,7 +116,7 @@ export function HtmlContent({ onComplete }: HtmlContentProps) {
       </div>
 
       {/* TAMAMLA Butonu */}
-      <div className="flex justify-end mt-4">
+      <div className="flex justify-end mt-4" style={{ position: "sticky", bottom: "7%", backgroundColor: "#f9f9f9", width: "100%", padding: "16px 0px", justifyContent: "center" }}>
         <button
           onClick={handleComplete}
           className="bg-black text-white px-6 hover:bg-gray-800 transition-colors flex items-center gap-2"

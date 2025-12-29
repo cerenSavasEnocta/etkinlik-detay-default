@@ -83,7 +83,8 @@ export function VideoPlayer({ onComplete }: VideoPlayerProps) {
       className="relative bg-black w-full"
       style={{ 
         aspectRatio: "16 / 9",
-        maxHeight: "77vh" 
+        maxHeight: "77vh",
+        minHeight: "77vh", 
       }}
       ref={containerRef}
     >

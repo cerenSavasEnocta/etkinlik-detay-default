@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Play, Clock } from "lucide-react";
+import { Play, Clock, X } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { motion, AnimatePresence } from "motion/react";
 import { Switch } from "./ui/switch";
@@ -13,6 +13,7 @@ interface AutoplayWidgetProps {
   autoplayDuration?: number; // milliseconds
   autoplayEnabled: boolean;
   onAutoplayToggle: (enabled: boolean) => void;
+  onClose: () => void;
 }
 
 export function AutoplayWidget({
@@ -24,6 +25,7 @@ export function AutoplayWidget({
   autoplayDuration = 10000,
   autoplayEnabled,
   onAutoplayToggle,
+  onClose,
 }: AutoplayWidgetProps) {
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -110,14 +112,37 @@ export function AutoplayWidget({
             width: "calc(100vw - 3rem)",
           }}
         >
-          <div
-            className="shadow-2xl overflow-hidden"
-            style={{
-              backgroundColor: "#1a1a1a",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              borderRadius: "2px",
-            }}
-          >
+          <div className="relative">
+            {/* Close ear */}
+            <button
+              onClick={onClose}
+              aria-label="Kapat"
+              className="absolute -left-12 top-0 bottom-0 flex items-center justify-center"
+              style={{
+                backgroundColor: "#0f0f0f",
+                borderTopLeftRadius: "2px",
+                borderBottomLeftRadius: "2px",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRight: "none",
+                cursor: "pointer",
+                position: "absolute",
+                top: "0",
+                left: "-35px",
+                width: "34px",
+                height: "34px",
+              }}
+            >
+              <X className="w-6 h-6" color="#fff" />
+            </button>
+
+            <div
+              className="shadow-2xl overflow-hidden"
+              style={{
+                backgroundColor: "#1a1a1a",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "2px",
+              }}
+            >
             {/* Header */}
             <div
               className="flex items-center justify-between px-4 py-3"
@@ -265,6 +290,7 @@ export function AutoplayWidget({
                   />
                 </button>
               </div>
+            </div>
             </div>
           </div>
         </motion.div>
