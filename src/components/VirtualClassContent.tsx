@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ChevronDown,
   ChevronRight,
@@ -70,6 +70,35 @@ export function VirtualClassContent({ onComplete }: VirtualClassContentProps) {
 
   const [isCompleted, setIsCompleted] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
+
+  const handleJoin = (id: number) => {
+    setSessions((prev) =>
+      prev.map((s) =>
+        s.id === id
+          ? { ...s, status: "attended", statusLabel: "Katıldın" }
+          : s,
+      ),
+    );
+    if (!isCompleted) {
+      setIsCompleted(true);
+      setShowCompletionModal(true);
+      onComplete?.();
+    }
+  };
+
+  // Varsayılan olarak 'ongoing' olan oturumu açık getir, diğerlerini kapat
+  useEffect(() => {
+    const ongoing = sessions.find((s) => s.status === "ongoing")?.id;
+    const targetId =
+      ongoing ??
+      sessions.find((s) => s.status === "not-started")?.id ??
+      sessions[0]?.id;
+    if (targetId) {
+      setSessions((prev) =>
+        prev.map((s) => ({ ...s, isExpanded: s.id === targetId })),
+      );
+    }
+  }, []);
 
   const toggleSession = (id: number) => {
     setSessions(
@@ -167,6 +196,24 @@ export function VirtualClassContent({ onComplete }: VirtualClassContentProps) {
                       </span>
                     </div>
                   </div>
+                  {/* Sağ taraftaki aksiyon alanı */}
+                  <div className="ml-4">
+                    {session.status === "ongoing" && !isCompleted && (
+                      <button
+                        onClick={() => handleJoin(session.id)}
+                        className="px-4 py-2 transition-colors"
+                        style={{
+                          backgroundColor: "#000",
+                          color: "#fff",
+                          cursor: "pointer",
+                          height: "36px",
+                          borderRadius: "2px",
+                        }}
+                      >
+                        Katıl
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 {/* Oturum Detayları */}
@@ -232,21 +279,6 @@ export function VirtualClassContent({ onComplete }: VirtualClassContentProps) {
           ))}
         </div>
 
-        {/* TAMAMLA Butonu */}
-        <div className="flex items-center justify-center mt-6" style={{ position: "sticky", bottom: "8%", backgroundColor: "#f9f9f9", width: "100%", padding: "16px 0px", justifyContent: "center" }}>
-          <button
-            onClick={handleComplete}
-            className="bg-black text-white px-6 hover:bg-gray-800 transition-colors flex items-center gap-2"
-            style={{
-              cursor: "pointer",
-              height: "40px",
-              borderRadius: "2px",
-            }}
-          >
-            {isCompleted && <Check size={18} />}
-            {isCompleted ? "TAMAMLANDI" : "TAMAMLA"}
-          </button>
-        </div>
       </div>
 
       <CompletionModal

@@ -6,7 +6,7 @@ import {
   X,
   ThumbsUp,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AssistantTab } from "./tabs/AssistantTab";
 import { NotesTab } from "./tabs/NotesTab";
 import { TranscriptTab } from "./tabs/TranscriptTab";
@@ -86,6 +86,18 @@ export function MainContent({
     return labelMap[type];
   };
 
+  const isTranscriptEnabled =
+    contentType === "video" ||
+    contentType === "podcast" ||
+    contentType === "elearning";
+
+  // Eğer transkript bu içerik tipinde desteklenmiyorsa, aktif sekmeyi güvenli bir sekmeye taşı
+  useEffect(() => {
+    if (!isTranscriptEnabled && activeTab === "transcript") {
+      setActiveTab("assistant");
+    }
+  }, [contentType]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="min-h-screen flex flex-col bg-[rgb(249,249,249)]">
       {/* İçerik Bilgisi */}
@@ -97,7 +109,7 @@ export function MainContent({
           <div className="flex items-center gap-3">
             <button
               onClick={onToggleContentTree}
-              className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-sm hover:bg-white hover:border-black transition-colors text-[rgb(0,0,0)] bg-[rgba(0,0,0,0)]"
+              className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-sm hover:bg-white hover:border-black transition-colors text-[rgb(0,0,0)] bg-white"
               aria-label="İçerik ağacını aç/kapat"
               style={{ cursor: "pointer" }}
             >
@@ -118,7 +130,9 @@ export function MainContent({
                 {completedContents.has(currentContentId) ? (
                   <span className="flex items-center gap-1 text-xs text-[#68D48D]">
                     <ThumbsUp className="w-3 h-3" />
-                    Başardın
+                    {contentType !== "exam" && contentType !== "elearning"
+                      ? "Tamamladın"
+                      : "Başardın"}
                   </span>
                 ) : (
                   <span className="text-xs text-[#818181]">
@@ -196,15 +210,17 @@ export function MainContent({
       )}
 
       {/* Sekmeler */}
-      <div className="border-t border-gray-200 mt-auto sticky bottom-0 z-10 bg-[rgb(249,249,249)]">
+      <div className="border-t border-gray-200 mt-auto sticky bottom-0 z-10 bg-[rgb(249,249,249)]"
+      style={{ display: "flex", justifyContent: "center", borderTop: "1px solid #eee" }}>
         <div
-          className="flex gap-6 px-6"
+          className="flex gap-6"
           style={{
             backgroundColor: "#F9F9F9",
             paddingTop: "20px",
             fontSize: "16px",
-            maxWidth: "1024px",
+            maxWidth: "944px",
             width: "100%",
+            borderBottom: "1px solid #eee",
           }}
         >
           <button
@@ -238,21 +254,23 @@ export function MainContent({
           >
             Notlarım
           </button>
-          <button
-            onClick={() => setActiveTab("transcript")}
-            className={`px-1 py-3 border-b-2 transition-colors ${
-              activeTab === "transcript"
-                ? "border-black text-black"
-                : "border-transparent text-gray-600 hover:text-gray-900"
-            }`}
-            style={{
-              cursor: "pointer",
-              fontWeight:
-                activeTab === "transcript" ? 600 : "normal",
-            }}
-          >
-            Transkript/İçerik metni
-          </button>
+          {isTranscriptEnabled && (
+            <button
+              onClick={() => setActiveTab("transcript")}
+              className={`px-1 py-3 border-b-2 transition-colors ${
+                activeTab === "transcript"
+                  ? "border-black text-black"
+                  : "border-transparent text-gray-600 hover:text-gray-900"
+              }`}
+              style={{
+                cursor: "pointer",
+                fontWeight:
+                  activeTab === "transcript" ? 600 : "normal",
+              }}
+            >
+              Transkript/İçerik metni
+            </button>
+          )}
           <button
             onClick={() => setActiveTab("questions")}
             className={`px-1 py-3 border-b-2 transition-colors ${
@@ -291,7 +309,9 @@ export function MainContent({
       {activeTab === "notes" && (
         <NotesTab currentContent={currentContent} />
       )}
-      {activeTab === "transcript" && <TranscriptTab />}
+      {activeTab === "transcript" && isTranscriptEnabled && (
+        <TranscriptTab showHeader={contentType === "elearning"} />
+      )}
       {activeTab === "questions" && <QuestionsTab />}
       {activeTab === "resources" && <ResourcesTab />}
     </div>

@@ -341,8 +341,9 @@ export function ContentTree({
 
   const renderItem = (item: ContentItem, level: number = 0) => {
     const isExpanded = expandedItems.has(item.id);
-    const hasChildren =
-      item.children && item.children.length > 0;
+    const hasChildren = !!(
+      item.children && item.children.length > 0
+    );
     const isSelected = selectedId === item.id;
     const isFirstItem = item.id === "1";
 

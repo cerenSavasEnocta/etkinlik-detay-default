@@ -7,7 +7,6 @@ import {
   Award,
   Plus,
   Check,
-  Bookmark,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState } from "react";
@@ -24,9 +23,6 @@ export function OverviewPanel() {
     useState<Set<number>>(new Set([0, 1]));
   const [isDescriptionExpanded, setIsDescriptionExpanded] =
     useState(false);
-  const [bookmarkedCourses, setBookmarkedCourses] = useState<
-    Set<number>
-  >(new Set());
   const [showThankYouModal, setShowThankYouModal] = useState(false);
 
   const toggleCompetency = (index: number) => {
@@ -37,16 +33,6 @@ export function OverviewPanel() {
       newSet.add(index);
     }
     setSelectedCompetencies(newSet);
-  };
-
-  const toggleBookmark = (courseIndex: number) => {
-    const newSet = new Set(bookmarkedCourses);
-    if (newSet.has(courseIndex)) {
-      newSet.delete(courseIndex);
-    } else {
-      newSet.add(courseIndex);
-    }
-    setBookmarkedCourses(newSet);
   };
 
   const competencies = [
@@ -103,11 +89,11 @@ export function OverviewPanel() {
               setIsDescriptionExpanded(!isDescriptionExpanded)
             }
             className="text-[#cc1f47] hover:underline"
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", fontSize: "14px" }}
           >
             {isDescriptionExpanded
               ? "Daha Az Gör"
-              : "... Devamını oku"}
+              : "Devamını oku"}
           </button>
         </p>
       </div>
@@ -150,7 +136,7 @@ export function OverviewPanel() {
               </span>
             </div>
             <div className="flex-1">
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-gray-900">
                 3 MAY 2024 12:15
               </span>
             </div>
@@ -163,8 +149,8 @@ export function OverviewPanel() {
               </span>
             </div>
             <div className="flex-1">
-              <span className="text-sm text-red-500">
-                5 Eylül 2025
+              <span className="text-sm text-gray-900">
+                5 EYL 2025 18:00
               </span>
             </div>
           </div>
@@ -193,13 +179,32 @@ export function OverviewPanel() {
               </span>
             </div>
             <div className="flex-1">
-              <a
-                href="#!"
-                className="text-sm text-blue-600 hover:underline"
-                style={{ cursor: "pointer" }}
+              <span className="text-sm text-gray-900">
+                Yöneticilikte Mükemmellik / Liderlik Becerileri
+              </span>
+            </div>
+          </div>
+          {/* Tahmini Süre */}
+          <div className="flex items-start">
+            <div className="flex items-center gap-2 w-[150px] flex-shrink-0">
+              <span
+                className="material-symbols-rounded"
+                style={{
+                  fontSize: "20px",
+                  color: "#4b5563",
+                  fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20",
+                }}
               >
-                Gelişim Planı
-              </a>
+                schedule
+              </span>
+              <span className="text-sm text-gray-900">
+                Tahmini Süre
+              </span>
+            </div>
+            <div className="flex-1">
+              <span className="text-sm text-gray-900">
+                2 saat 17 dakika
+              </span>
             </div>
           </div>
           <div className="flex items-start">
@@ -246,16 +251,40 @@ export function OverviewPanel() {
               </span>
             </div>
           </div>
+          {/* Geçirilen süre */}
           <div className="flex items-start">
             <div className="flex items-center gap-2 w-[150px] flex-shrink-0">
-              <Award className="w-5 h-5 text-gray-600" />
+              <span
+                className="material-symbols-rounded"
+                style={{
+                  fontSize: "20px",
+                  color: "#4b5563",
+                  fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20",
+                }}
+              >
+                timer
+              </span>
               <span className="text-sm text-gray-900">
-                Sertifika
+                Geçirilen Süre
               </span>
             </div>
             <div className="flex-1">
-              <span className="text-sm text-gray-600">
-                Neo Skola Başarı Sertifikası
+              <span className="text-sm text-gray-900">
+                0 saat 00 dakika
+              </span>
+            </div>
+          </div>
+          {/* İçerik Tipleri */}
+          <div className="flex items-start">
+            <div className="flex items-center gap-2 w-[150px] flex-shrink-0">
+              <Layers className="w-5 h-5 text-gray-600" />
+              <span className="text-sm text-gray-900">
+                İçerik Tipleri
+              </span>
+            </div>
+            <div className="flex-1">
+              <span className="text-sm text-gray-900">
+                3 görev, 1 html içerik, 2 sınav
               </span>
             </div>
           </div>
@@ -278,60 +307,48 @@ export function OverviewPanel() {
               position: "relative",
             }}
           >
-            <div className="w-32 flex-shrink-0">
+            <div className="flex-shrink-0" style={{ width: "100px", height: "100px" }}>
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1646579886135-068c73800308?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400"
-                alt="Enocta Oryantasyon"
+                alt="Akıllı Reklamcılık Çağı: AdTech ve Programatik"
                 className="w-full h-full object-cover"
               />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleBookmark(0);
-                }}
-                className="absolute bottom-2 right-2 p-1.5 bg-white"
-                style={{
-                  cursor: "pointer",
-                  position: "absolute",
-                  right: "10px",
-                  bottom: "10px",
-                  boxShadow: "none",
-                  border: "1px solid #eee",
-                  borderRadius: "2px",
-                }}
-              >
-                <Bookmark
-                  className={`w-4 h-4 ${
-                    bookmarkedCourses.has(0)
-                      ? "fill-black text-black"
-                      : "text-gray-600"
-                  }`}
-                />
-              </button>
             </div>
             <div className="flex-1 ml-3">
-              <h4 className="text-sm mb-1">
-                Enocta Oryantasyon
+              <h4 className="text-sm mb-4">
+                Akıllı Reklamcılık Çağı: AdTech ve Programatik
               </h4>
               <p className="text-xs text-gray-500 mb-2">
                 2 Saat 40 dakika
               </p>
-              <div className="flex items-center gap-1">
-                <div className="flex">
-                  {[1, 2, 3, 4].map((star) => (
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1">
+                  <div className="flex">
+                    {[1, 2, 3, 4].map((star) => (
+                      <Star
+                        key={star}
+                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                      />
+                    ))}
                     <Star
-                      key={star}
                       className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                      style={{ clipPath: "inset(0 10% 0 0)" }}
                     />
-                  ))}
-                  <Star
-                    className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                    style={{ clipPath: "inset(0 10% 0 0)" }}
-                  />
+                  </div>
+                  <span className="text-xs text-gray-600">
+                    4.9 (203)
+                  </span>
                 </div>
-                <span className="text-xs text-gray-600">
-                  4.9 (203)
-                </span>
+                <div
+                  className="px-2 py-0.5 rounded"
+                  style={{
+                    backgroundColor: "rgba(30,144,255,0.1)",
+                    color: "#1E90FF",
+                    fontSize: "11px",
+                  }}
+                >
+                  E-Eğitim
+                </div>
               </div>
             </div>
           </div>
@@ -345,57 +362,46 @@ export function OverviewPanel() {
               position: "relative",
             }}
           >
-            <div className="w-32 flex-shrink-0">
+            <div className="flex-shrink-0" style={{ width: "100px", height: "100px" }}>
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1653387137517-fbc54d488ed8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400"
                 alt="JavaScript: Kopyalarla Yazılım Geliştirmek"
                 className="w-full h-full object-cover"
               />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleBookmark(0);
-                }}
-                className="absolute bottom-2 right-2 p-1.5 bg-white"
-                style={{
-                  cursor: "pointer",
-                  position: "absolute",
-                  right: "10px",
-                  bottom: "10px",
-                  boxShadow: "none",
-                  border: "1px solid #eee",
-                  borderRadius: "2px",
-                }}
-              >
-                <Bookmark
-                  className={`w-4 h-4 ${
-                    bookmarkedCourses.has(0)
-                      ? "fill-black text-black"
-                      : "text-gray-600"
-                  }`}
-                />
-              </button>
+              
             </div>
             <div className="flex-1 ml-3">
-              <h4 className="text-sm mb-1">
+              <h4 className="text-sm mb-4">
                 JavaScript: Kopyalarla Yazılım Geliştirmek
               </h4>
               <p className="text-xs text-gray-500 mb-2">
                 1 Saat 42 dakika
               </p>
-              <div className="flex items-center gap-1">
-                <div className="flex">
-                  {[1, 2, 3, 4].map((star) => (
-                    <Star
-                      key={star}
-                      className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                  <Star className="w-3 h-3 text-gray-300" />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1">
+                  <div className="flex">
+                    {[1, 2, 3, 4].map((star) => (
+                      <Star
+                        key={star}
+                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                      />
+                    ))}
+                    <Star className="w-3 h-3 text-gray-300" />
+                  </div>
+                  <span className="text-xs text-gray-600">
+                    4.2 (156)
+                  </span>
                 </div>
-                <span className="text-xs text-gray-600">
-                  4.2 (156)
-                </span>
+                <div
+                  className="px-2 py-0.5 rounded"
+                  style={{
+                    backgroundColor: "rgba(30,144,255,0.1)",
+                    color: "#1E90FF",
+                    fontSize: "11px",
+                  }}
+                >
+                  Sınıf İçi Eğitim
+                </div>
               </div>
             </div>
           </div>
@@ -409,56 +415,44 @@ export function OverviewPanel() {
               position: "relative",
             }}
           >
-            <div className="w-32 flex-shrink-0">
+            <div className="flex-shrink-0" style={{ width: "100px", height: "100px" }}>
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400"
-                alt="Proje Yönetimi Temelleri"
+                alt="Design Thinking: Tasarım Odaklı Düşünme"
                 className="w-full h-full object-cover"
               />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleBookmark(2);
-                }}
-                className="absolute bottom-2 right-2 p-1.5 bg-white"
-                style={{
-                  cursor: "pointer",
-                  position: "absolute",
-                  right: "10px",
-                  bottom: "10px",
-                  boxShadow: "none",
-                  border: "1px solid #eee",
-                  borderRadius: "2px",
-                }}
-              >
-                <Bookmark
-                  className={`w-4 h-4 ${
-                    bookmarkedCourses.has(2)
-                      ? "fill-black text-black"
-                      : "text-gray-600"
-                  }`}
-                />
-              </button>
             </div>
             <div className="flex-1 ml-3">
-              <h4 className="text-sm mb-1">
-                Proje Yönetimi Temelleri
+              <h4 className="text-sm mb-4">
+                Design Thinking: Tasarım Odaklı Düşünme
               </h4>
               <p className="text-xs text-gray-500 mb-2">
                 3 Saat 15 dakika
               </p>
-              <div className="flex items-center gap-1">
-                <div className="flex">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star
-                      key={star}
-                      className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star
+                        key={star}
+                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                      />
+                    ))}
+                  </div>
+                  <span className="text-xs text-gray-600">
+                    5.0 (89)
+                  </span>
                 </div>
-                <span className="text-xs text-gray-600">
-                  5.0 (89)
-                </span>
+                <div
+                  className="px-2 py-0.5 rounded"
+                  style={{
+                    backgroundColor: "rgba(30,144,255,0.1)",
+                    color: "#1E90FF",
+                    fontSize: "11px",
+                  }}
+                >
+                  E-Eğitim
+                </div>
               </div>
             </div>
           </div>
@@ -472,60 +466,48 @@ export function OverviewPanel() {
               position: "relative",
             }}
           >
-            <div className="w-32 flex-shrink-0">
+            <div className="flex-shrink-0" style={{ width: "100px", height: "100px" }}>
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400"
-                alt="Etkili İletişim Becerileri"
+                alt="Geri Bildirim Alma Gelişim Yolculuğu"
                 className="w-full h-full object-cover"
               />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleBookmark(3);
-                }}
-                className="absolute bottom-2 right-2 p-1.5 bg-white"
-                style={{
-                  cursor: "pointer",
-                  position: "absolute",
-                  right: "10px",
-                  bottom: "10px",
-                  boxShadow: "none",
-                  border: "1px solid #eee",
-                  borderRadius: "2px",
-                }}
-              >
-                <Bookmark
-                  className={`w-4 h-4 ${
-                    bookmarkedCourses.has(3)
-                      ? "fill-black text-black"
-                      : "text-gray-600"
-                  }`}
-                />
-              </button>
             </div>
             <div className="flex-1 ml-3">
-              <h4 className="text-sm mb-1">
-                Etkili İletişim Becerileri
+              <h4 className="text-sm mb-4">
+                Geri Bildirim Alma Gelişim Yolculuğu
               </h4>
               <p className="text-xs text-gray-500 mb-2">
                 2 Saat 20 dakika
               </p>
-              <div className="flex items-center gap-1">
-                <div className="flex">
-                  {[1, 2, 3, 4].map((star) => (
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1">
+                  <div className="flex">
+                    {[1, 2, 3, 4].map((star) => (
+                      <Star
+                        key={star}
+                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                      />
+                    ))}
                     <Star
-                      key={star}
                       className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                      style={{ clipPath: "inset(0 30% 0 0)" }}
                     />
-                  ))}
-                  <Star
-                    className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                    style={{ clipPath: "inset(0 30% 0 0)" }}
-                  />
+                  </div>
+                  <span className="text-xs text-gray-600">
+                    4.7 (312)
+                  </span>
                 </div>
-                <span className="text-xs text-gray-600">
-                  4.7 (312)
-                </span>
+                <div
+                  className="px-2 py-0.5 rounded"
+                  style={{
+                    backgroundColor: "rgba(30,144,255,0.1)",
+                    color: "#1E90FF",
+                    fontSize: "11px",
+                  }}
+                >
+                  Sınıf İçi Eğitim
+                </div>
               </div>
             </div>
           </div>
@@ -539,60 +521,48 @@ export function OverviewPanel() {
               position: "relative",
             }}
           >
-            <div className="w-32 flex-shrink-0">
+            <div className="flex-shrink-0" style={{ width: "100px", height: "100px" }}>
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400"
-                alt="Veri Analizi ve Görselleştirme"
+                alt="Dijital Çağda Yanilikçilik ve Yaratıcılık Gelişim Yolculuğu"
                 className="w-full h-full object-cover"
               />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleBookmark(4);
-                }}
-                className="absolute bottom-2 right-2 p-1.5 bg-white"
-                style={{
-                  cursor: "pointer",
-                  position: "absolute",
-                  right: "10px",
-                  bottom: "10px",
-                  boxShadow: "none",
-                  border: "1px solid #eee",
-                  borderRadius: "2px",
-                }}
-              >
-                <Bookmark
-                  className={`w-4 h-4 ${
-                    bookmarkedCourses.has(4)
-                      ? "fill-black text-black"
-                      : "text-gray-600"
-                  }`}
-                />
-              </button>
             </div>
             <div className="flex-1 ml-3">
-              <h4 className="text-sm mb-1">
-                Veri Analizi ve Görselleştirme
+              <h4 className="text-sm mb-4">
+                Dijital Çağda Yanilikçilik ve Yaratıcılık Gelişim Yolculuğu
               </h4>
               <p className="text-xs text-gray-500 mb-2">
                 4 Saat 5 dakika
               </p>
-              <div className="flex items-center gap-1">
-                <div className="flex">
-                  {[1, 2, 3, 4].map((star) => (
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1">
+                  <div className="flex">
+                    {[1, 2, 3, 4].map((star) => (
+                      <Star
+                        key={star}
+                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                      />
+                    ))}
                     <Star
-                      key={star}
                       className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                      style={{ clipPath: "inset(0 50% 0 0)" }}
                     />
-                  ))}
-                  <Star
-                    className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                    style={{ clipPath: "inset(0 50% 0 0)" }}
-                  />
+                  </div>
+                  <span className="text-xs text-gray-600">
+                    4.5 (178)
+                  </span>
                 </div>
-                <span className="text-xs text-gray-600">
-                  4.5 (178)
-                </span>
+                <div
+                  className="px-2 py-0.5 rounded"
+                  style={{
+                    backgroundColor: "rgba(30,144,255,0.1)",
+                    color: "#1E90FF",
+                    fontSize: "11px",
+                  }}
+                >
+                  E-Eğitim
+                </div>
               </div>
             </div>
           </div>

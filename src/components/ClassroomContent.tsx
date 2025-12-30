@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ChevronDown,
   ChevronRight,
@@ -31,13 +31,58 @@ export function ClassroomContent({ onComplete }: ClassroomContentProps) {
     {
       id: 1,
       title: "1. Oturum",
-      location: "Üniversiteler Mahallesi, İhsan Doğramacı Bulvarı Bilkent Titaniyum Blok 17/B, ODTÜ Teknokent, 06531 Çankaya/Ankara",
+      location: "Titaniyum Blok 17/B, ODTÜ Teknokent",
       startDate: "21 Mart 2025 14:00",
       endDate: "21 Mart 2025 15:30",
       instructor: "Sinan Sağıroğlu",
       isExpanded: true,
     },
   ]);
+
+  // Türkçe tarih parse yardımcıları
+  const parseTrDate = (dateStr: string): Date => {
+    const months: Record<string, number> = {
+      Ocak: 0,
+      Şubat: 1,
+      Mart: 2,
+      Nisan: 3,
+      Mayıs: 4,
+      Haziran: 5,
+      Temmuz: 6,
+      Ağustos: 7,
+      Eylül: 8,
+      Ekim: 9,
+      Kasım: 10,
+      Aralık: 11,
+    };
+    const parts = dateStr.split(" ");
+    const day = parseInt(parts[0], 10);
+    const monthIndex = months[parts[1]];
+    const year = parseInt(parts[2], 10);
+    const [hourStr, minStr] = (parts[3] || "00:00").split(":");
+    const hour = parseInt(hourStr || "0", 10);
+    const minute = parseInt(minStr || "0", 10);
+    return new Date(year, monthIndex, day, hour, minute);
+  };
+
+  // Sıradaki/Devam eden oturumu açık getir
+  useEffect(() => {
+    if (sessions.length === 0) return;
+    const now = new Date();
+    const withDates = sessions.map((s) => ({
+      s,
+      start: parseTrDate(s.startDate),
+      end: parseTrDate(s.endDate),
+    }));
+    const ongoing = withDates.find(
+      (x) => x.start <= now && now <= x.end,
+    )?.s.id;
+    const upcoming = withDates.find((x) => x.start > now)?.s.id;
+    const targetId = ongoing ?? upcoming ?? sessions[0].id;
+    setSessions((prev) =>
+      prev.map((s) => ({ ...s, isExpanded: s.id === targetId })),
+    );
+  }, []);
 
   const toggleSession = (id: number) => {
     setSessions(

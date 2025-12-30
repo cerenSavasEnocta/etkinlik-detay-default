@@ -6,7 +6,11 @@ const transcriptPages = [
   `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum lorem sed risus ultricies tristique nulla. Vitae elementum curabitur vitae nunc sed velit dignissim sodales. Mauris augue neque gravida in fermentum et sollicitudin ac. Nunc sed id semper risus in hendrerit gravida rutrum. Senectus et netus et malesuada fames ac turpis egestas integer. Ut porttitor leo a diam sollicitudin tempor id eu. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum.`,
 ];
 
-export function TranscriptTab() {
+interface TranscriptTabProps {
+  showHeader?: boolean;
+}
+
+export function TranscriptTab({ showHeader = true }: TranscriptTabProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 40;
 
@@ -33,36 +37,38 @@ export function TranscriptTab() {
     <div className="px-6 py-6" style={{ backgroundColor: "#f9f9f9" }}>
       <div className="max-w-4xl mx-auto">
       {/* Sayfalama Kontrolleri */}
-      <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-gray-200" style={{ backgroundColor: "#fff", padding: "20px", borderBottom: "none" }}>
-        <button
-          onClick={goToPrevPage}
-          disabled={currentPage === 1}
-          className="p-2 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600">Sayfa</span>
-          <input
-            type="number"
-            value={currentPage}
-            onChange={handlePageInputChange}
-            min={1}
-            max={totalPages}
-            className="w-12 px-2 py-1 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#cc1f47]"
-          />
-          <span className="text-sm text-gray-600">/ {totalPages}</span>
-        </div>
+      {showHeader && (
+        <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-gray-200" style={{ backgroundColor: "#fff", padding: "20px", borderBottom: "none" }}>
+          <button
+            onClick={goToPrevPage}
+            disabled={currentPage === 1}
+            className="p-2 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-600">Sayfa</span>
+            <input
+              type="number"
+              value={currentPage}
+              onChange={handlePageInputChange}
+              min={1}
+              max={totalPages}
+              className="w-12 px-2 py-1 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#cc1f47]"
+            />
+            <span className="text-sm text-gray-600">/ {totalPages}</span>
+          </div>
 
-        <button
-          onClick={goToNextPage}
-          disabled={currentPage === totalPages}
-          className="p-2 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-      </div>
+          <button
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages}
+            className="p-2 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      )}
 
       {/* Transkript İçeriği */}
       <div className="max-w-4xl">
