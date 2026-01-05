@@ -498,12 +498,17 @@ export function ContentTree({
             </div>
           </div>
           <div
-            className="w-full bg-gray-200 rounded-full relative"
+            className="w-full bg-gray-200 rounded-full relative overflow-hidden"
             style={{ height: "28px" }}
           >
             <div
               className="bg-[#68D48D] h-full rounded-full transition-all"
-              style={{ width: `${progressData.percentage}%` }}
+              style={{
+                width:
+                  progressData.points === 0
+                    ? "0%"
+                    : `${Math.max(1, progressData.points)}%`,
+              }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <span
