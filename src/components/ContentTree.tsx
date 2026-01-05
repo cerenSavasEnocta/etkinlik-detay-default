@@ -497,11 +497,22 @@ export function ContentTree({
               <span>{progressData.points} </span>Puan
             </div>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-1.5">
+          <div
+            className="w-full bg-gray-200 rounded-full relative"
+            style={{ height: "28px" }}
+          >
             <div
-              className="bg-green-500 h-1.5 rounded-full"
+              className="bg-[#68D48D] h-full rounded-full transition-all"
               style={{ width: `${progressData.percentage}%` }}
-            ></div>
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span
+                className="text-white"
+                style={{ fontWeight: 700 }}
+              >
+                %{progressData.points}
+              </span>
+            </div>
           </div>
         </div>
       );
