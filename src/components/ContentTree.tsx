@@ -214,6 +214,9 @@ export function ContentTree({
   };
 
   const progressData = calculateProgress();
+  const allCompleted =
+    progressData.totalContents > 0 &&
+    progressData.completedCount === progressData.totalContents;
 
   const toggleExpand = (id: string) => {
     setExpandedItems((prev) => {
@@ -439,20 +442,20 @@ export function ContentTree({
                           Eğitimi nasıl tamamlayabilirim?
                         </h4>
                         <div className="flex items-start gap-2">
-                          <span
+                      <span
                             className="material-symbols-rounded flex-shrink-0"
                             style={{
                               fontSize: "18px",
-                              color:
-                                completedVideos >= 1
-                                  ? "#68D48D"
-                                  : "#EF4444",
+                          color:
+                            (allCompleted || completedVideos >= 1)
+                              ? "#68D48D"
+                              : "#EF4444",
                               fontVariationSettings: "'FILL' 1",
                             }}
                           >
-                            {completedVideos >= 1
-                              ? "check_circle"
-                              : "cancel"}
+                        {(allCompleted || completedVideos >= 1)
+                          ? "check_circle"
+                          : "cancel"}
                           </span>
                           <p
                             className="text-gray-600"
@@ -476,20 +479,20 @@ export function ContentTree({
                           Eğitimi nasıl başarabilirim?
                         </h4>
                         <div className="flex items-start gap-2">
-                          <span
+                      <span
                             className="material-symbols-rounded flex-shrink-0"
                             style={{
                               fontSize: "18px",
-                              color:
-                                completedVideos >= 2
-                                  ? "#68D48D"
-                                  : "#EF4444",
+                          color:
+                            (allCompleted || completedVideos >= 2)
+                              ? "#68D48D"
+                              : "#EF4444",
                               fontVariationSettings: "'FILL' 1",
                             }}
                           >
-                            {completedVideos >= 2
-                              ? "check_circle"
-                              : "cancel"}
+                        {(allCompleted || completedVideos >= 2)
+                          ? "check_circle"
+                          : "cancel"}
                           </span>
                           <p
                             className="text-gray-600"
