@@ -56,7 +56,7 @@ export function OverviewPanel() {
           className="w-full h-24 object-cover rounded-lg mb-3"
         />
         <h2 className="text-gray-900 mb-1">
-          Design Thinking: Tasarım Odaklı Düşünme
+          Kurumlarda Bilişsel Becerileri Geliştirme
         </h2>
         <div className="flex items-center gap-2">
           <div className="flex">
@@ -418,13 +418,13 @@ export function OverviewPanel() {
             <div className="flex-shrink-0" style={{ width: "100px", height: "100px" }}>
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400"
-                alt="Design Thinking: Tasarım Odaklı Düşünme"
+                alt="Kurumlarda Bilişsel Becerileri Geliştirme"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="flex-1 ml-3">
               <h4 className="text-sm mb-4">
-                Design Thinking: Tasarım Odaklı Düşünme
+                Kurumlarda Bilişsel Becerileri Geliştirme
               </h4>
               <p className="text-xs text-gray-500 mb-2">
                 3 Saat 15 dakika

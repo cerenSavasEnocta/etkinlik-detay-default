@@ -81,7 +81,7 @@ export function Header({
               </span>
             </button>
             <h2 className="text-gray-900 text-[18px]">
-              Design Thinking: Tasarım Odaklı Düşünme
+              Kurumlarda Bilişsel Becerileri Geliştirme
             </h2>
           </div>
 
