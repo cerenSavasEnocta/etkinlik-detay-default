@@ -43,7 +43,7 @@ export const contentData: ContentItem[] = [
     children: [
       {
         id: "2-1",
-        title: "Beyni Geliştiren 3 Aktivite",
+        title: "İnsan Sınırlarını Aşmak İçin Ne Yapmalı?",
         type: "video",
         typeLabel: "Video",
         duration: "10 dk",
