@@ -31,7 +31,7 @@ export function ClassroomContent({ onComplete }: ClassroomContentProps) {
     {
       id: 1,
       title: "1. Oturum",
-      location: "Titaniyum Blok 17/B, ODTÜ Teknokent",
+      location: "Titanyum Blok 17/B, ODTÜ Teknokent",
       startDate: "21 Mart 2025 14:00",
       endDate: "21 Mart 2025 15:30",
       instructor: "Sinan Sağıroğlu",

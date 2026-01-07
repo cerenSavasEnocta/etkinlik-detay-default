@@ -7,6 +7,7 @@ import {
   ThumbsUp,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { contentData } from "./ContentTree";
 import { AssistantTab } from "./tabs/AssistantTab";
 import { NotesTab } from "./tabs/NotesTab";
 import { TranscriptTab } from "./tabs/TranscriptTab";
@@ -91,6 +92,30 @@ export function MainContent({
     contentType === "podcast" ||
     contentType === "elearning";
 
+  // Aktif içeriğin puanı (varsa) - video, podcast, elearning, exam için göster
+  const findCurrentPoints = (): number | undefined => {
+    const stack = [...contentData];
+    while (stack.length) {
+      const item: any = stack.pop();
+      if (!item) continue;
+      if (item.id === currentContentId) {
+        if (
+          ["video", "podcast", "elearning", "exam"].includes(
+            item.type,
+          )
+        ) {
+          return item.points ?? 80;
+        }
+        return undefined;
+      }
+      if (item.children && item.children.length) {
+        stack.push(...item.children);
+      }
+    }
+    return undefined;
+  };
+  const currentPoints = findCurrentPoints();
+
   // Eğer transkript bu içerik tipinde desteklenmiyorsa, aktif sekmeyi güvenli bir sekmeye taşı
   useEffect(() => {
     if (!isTranscriptEnabled && activeTab === "transcript") {
@@ -127,6 +152,14 @@ export function MainContent({
                 <span className="text-xs text-gray-500">
                   {getContentTypeLabel(contentType)} · 10 dk
                 </span>
+                {currentPoints !== undefined &&
+                 completedContents.has(currentContentId) && (
+                  <>
+                    <span className="text-xs text-[#68D48D]">
+                      25 puan
+                    </span>
+                  </>
+                )}
                 {completedContents.has(currentContentId) ? (
                   <span className="flex items-center gap-1 text-xs text-[#68D48D]">
                     <ThumbsUp className="w-3 h-3" />

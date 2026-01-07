@@ -26,6 +26,7 @@ export interface ContentItem {
   progress?: number; // 0-100 arası ilerleme yüzdesi
   completed?: boolean; // İçerik tamamlandı mı?
   required?: boolean; // İçerik zorunlu mu?
+  points?: number; // Puan bilgisi (video, podcast, elearning, exam)
 }
 
 export const contentData: ContentItem[] = [
@@ -46,6 +47,7 @@ export const contentData: ContentItem[] = [
         type: "video",
         typeLabel: "Video",
         duration: "10 dk",
+        points: 80,
       },
       {
         id: "2-2",
@@ -75,6 +77,7 @@ export const contentData: ContentItem[] = [
         type: "podcast",
         typeLabel: "Podcast",
         duration: "10 dk",
+        points: 80,
       },
       {
         id: "3-2",
@@ -90,6 +93,7 @@ export const contentData: ContentItem[] = [
         type: "elearning",
         typeLabel: "E-Eğitim",
         duration: "15 dk",
+        points: 80,
       },
       {
         id: "3-5",
@@ -112,6 +116,7 @@ export const contentData: ContentItem[] = [
         type: "exam",
         typeLabel: "Sınav",
         duration: "10 dk",
+        points: 80,
       },
     ],
   },
@@ -159,6 +164,8 @@ export function ContentTree({
   const calculateProgress = () => {
     let totalContents = 0;
     let completedCount = 0;
+    let scoreEligibleCompleted = 0;
+    const scoreTypes = new Set(["video", "podcast", "elearning", "exam"]);
 
     const countContents = (items: ContentItem[]) => {
       items.forEach((item) => {
@@ -176,6 +183,9 @@ export function ContentTree({
 
             if (isCompletedStatic || isCompletedDynamic) {
               completedCount++;
+              if (scoreTypes.has(item.type)) {
+                scoreEligibleCompleted++;
+              }
             }
           } else {
             // Child'ları say
@@ -191,13 +201,15 @@ export function ContentTree({
       totalContents > 0
         ? (completedCount / totalContents) * 100
         : 0;
-    const points = Math.round(percentage);
+    const percentageRounded = Math.round(percentage);
+    const pointsScore = Math.min(scoreEligibleCompleted * 25, 100);
 
     return {
       totalContents,
       completedCount,
       percentage,
-      points,
+      percentageRounded,
+      pointsScore,
     };
   };
 
@@ -494,28 +506,32 @@ export function ContentTree({
               </TooltipProvider>
             </div>
             <div className="pointWrapper">
-              <span>{progressData.points} </span>Puan
+              <span>{progressData.pointsScore} </span>Puan
             </div>
           </div>
           <div
             className="w-full bg-gray-200 rounded-full relative overflow-hidden"
-            style={{ height: "28px" }}
+            style={{ height: "18px" }}
           >
             <div
-              className="bg-[#68D48D] h-full rounded-full transition-all"
+              className="h-full rounded-full transition-all"
               style={{
+                backgroundColor: "#68D48D",
                 width:
-                  progressData.points === 0
+                  progressData.percentageRounded === 0
                     ? "0%"
-                    : `${Math.max(1, progressData.points)}%`,
+                    : `${Math.max(1, progressData.percentageRounded)}%`,
               }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <span
-                className="text-white"
-                style={{ fontWeight: 700 }}
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#000",
+                }}
               >
-                %{progressData.points}
+                %{progressData.percentageRounded}
               </span>
             </div>
           </div>
@@ -583,6 +599,33 @@ export function ContentTree({
                   <span className="text-[12px] text-[rgb(129,129,129)]">
                     {item.duration}
                   </span>
+                )}
+                {/* Puan - yalnızca video, podcast, elearning ve exam */}
+                {(() => {
+                  const isCompleted =
+                    !!item.completed || completedContents.has(item.id);
+                  return (
+                    ["video", "podcast", "elearning", "exam"].includes(
+                      item.type,
+                    ) && isCompleted
+                  );
+                })() && (
+                  <>
+                    <div
+                      className="rounded-md bg-[#818181]"
+                      style={{
+                        width: "4px",
+                        height: "4px",
+                        margin: "0px 4px",
+                      }}
+                    />
+                    <span
+                      className="text-[12px]"
+                      style={{ color: "#68D48D", fontWeight: 600 }}
+                    >
+                      25 puan
+                    </span>
+                  </>
                 )}
                 {item.required && (
                   <span
