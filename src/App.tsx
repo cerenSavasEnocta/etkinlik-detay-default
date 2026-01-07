@@ -160,12 +160,7 @@ export default function App() {
     localStorage.setItem('autoplayEnabled', JSON.stringify(enabled));
   };
 
-  // Tüm içerikler tamamlandığında başarı ekranını göster
-  useEffect(() => {
-    if (isAllCompleted && !showSuccessPage && !suppressSuccessOnce) {
-      setShowSuccessPage(true);
-    }
-  }, [isAllCompleted, showSuccessPage, suppressSuccessOnce]);
+  // Başarı ekranı otomatik açılmaz; sadece sınav ekranındaki "Sonuç" ile açılır
 
   // Başarı ekranından geri dönünce bastırmayı etkinleştir
   const handleCloseSuccess = () => {
@@ -173,12 +168,7 @@ export default function App() {
     setSuppressSuccessOnce(true);
   };
 
-  // Son içerikten ayrılınca (başka bir içeriğe geçilince) bastırmayı sıfırla
-  useEffect(() => {
-    if (currentContentId !== lastItemId) {
-      setSuppressSuccessOnce(false);
-    }
-  }, [currentContentId, lastItemId]);
+  // suppressSuccessOnce korunuyor; gerekirse gelecekte kullanılabilir
 
   return (
     <>
@@ -236,6 +226,7 @@ export default function App() {
             onContentComplete={() => handleContentComplete(currentContentId)}
             currentContentId={currentContentId}
             completedContents={completedContents}
+            onExamResult={() => setShowSuccessPage(true)}
           />
         </div>
 

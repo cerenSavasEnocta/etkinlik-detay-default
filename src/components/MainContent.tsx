@@ -47,6 +47,7 @@ interface MainContentProps {
   onContentComplete: () => void;
   currentContentId: string;
   completedContents: Set<string>;
+  onExamResult?: () => void;
 }
 
 type TabType =
@@ -239,7 +240,10 @@ export function MainContent({
         <TaskContent onComplete={onContentComplete} />
       )}
       {contentType === "exam" && (
-        <ExamContent onComplete={onContentComplete} />
+        <ExamContent
+          onComplete={onContentComplete}
+          onShowResult={onExamResult}
+        />
       )}
 
       {/* Sekmeler */}

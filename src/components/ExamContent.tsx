@@ -11,9 +11,10 @@ import {
 
 interface ExamContentProps {
   onComplete?: () => void;
+  onShowResult?: () => void;
 }
 
-export function ExamContent({ onComplete }: ExamContentProps) {
+export function ExamContent({ onComplete, onShowResult }: ExamContentProps) {
   const [isCompleted, setIsCompleted] = useState(false);
   const [showCompletionModal, setShowCompletionModal] =
     useState(false);
@@ -30,7 +31,11 @@ export function ExamContent({ onComplete }: ExamContentProps) {
   };
 
   const handleShowResult = () => {
-    setShowResultModal(true);
+    if (onShowResult) {
+      onShowResult();
+    } else {
+      setShowResultModal(true);
+    }
   };
 
   return (
