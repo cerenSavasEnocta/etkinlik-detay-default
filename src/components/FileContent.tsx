@@ -13,8 +13,8 @@ export function FileContent({ onComplete }: FileContentProps) {
   
   const files = [
     { name: 'fikir_olusturma.pdf', url: '#' },
-    { name: 'tasarim_odakli_dusunmenin_asamalari.pdf', url: '#' },
-    { name: 'amaclar_ve_araclar.pdf', url: '#' },
+    { name: 'mesleki_gelisimin_asamalari.pdf', url: '#' },
+    { name: 'calisan_icin_gerekli_amaclar_ve_araclar.pdf', url: '#' },
   ];
 
   const handleDownload = () => {
@@ -51,7 +51,7 @@ export function FileContent({ onComplete }: FileContentProps) {
             </div>
             <div>
               <div className="text-sm text-gray-900">
-                Gelecek Bilimde – Yeni teknolojiler, uzay keşfi ve yapay zeka üzerine
+              Kurumlar İçin Tasarlanan Araç ve Yöntemlerin Entegrasyonu
               </div>
               <div className="text-xs text-gray-500 mt-0.5">2.04 MB</div>
             </div>

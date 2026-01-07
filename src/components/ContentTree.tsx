@@ -38,12 +38,12 @@ export const contentData: ContentItem[] = [
   },
   {
     id: "2",
-    title: "Tasarım Odaklı Düşünmeye Giriş",
+    title: "Bilişsel Becerileri Geliştirme",
     type: "video",
     children: [
       {
         id: "2-1",
-        title: "Tasarım Odaklı Düşünmenin Tanımı",
+        title: "Beyni Geliştiren 3 Aktivite",
         type: "video",
         typeLabel: "Video",
         duration: "10 dk",
@@ -59,7 +59,7 @@ export const contentData: ContentItem[] = [
       },
       {
         id: "2-3",
-        title: "Süreç",
+        title: "Kurumlar İçin Tasarlanan Araç ve Yöntemler",
         type: "file",
         typeLabel: "Dosya",
         duration: "10 dk",
@@ -68,12 +68,12 @@ export const contentData: ContentItem[] = [
   },
   {
     id: "3",
-    title: "Tasarım Odaklı Düşünmenin Aşamaları",
+    title: "Şirket Çalışanlarının Gelişimi ve Güçlendirilmesi",
     type: "video",
     children: [
       {
         id: "3-1",
-        title: "Tasarım Odaklı Düşünmenin Aşamaları - Empati",
+        title: "Etkili Ekip Çalışması",
         type: "podcast",
         typeLabel: "Podcast",
         duration: "10 dk",
@@ -82,14 +82,14 @@ export const contentData: ContentItem[] = [
       {
         id: "3-2",
         title:
-          "Tasarım Odaklı Düşünmenin Aşamaları - Tanımlama",
+          "Gelişim Odaklı Düşünme",
         type: "virtual-class",
         typeLabel: "Sanal Sınıf",
         duration: "10 dk",
       },
       {
         id: "3-3",
-        title: "Fikir Oluşturma",
+        title: "Mesleki Gelişim Şeması",
         type: "elearning",
         typeLabel: "E-Eğitim",
         duration: "15 dk",
@@ -97,14 +97,14 @@ export const contentData: ContentItem[] = [
       },
       {
         id: "3-5",
-        title: "Tasarım Odaklı Düşünmenin Aşamaları - Test",
+        title: "Departmanlar Arası İşbirliği ve Ortak Hedef Planlaması",
         type: "task",
         typeLabel: "Görev",
         duration: "10 dk",
       },
       {
         id: "3-6",
-        title: "Örnek Projeler",
+        title: "Ölçülebilir Kişisel ve Mesleki Gelişim Hedefleri",
         type: "classroom",
         typeLabel: "Sınıf İçi Eğitim",
         duration: "10 dk",
@@ -112,7 +112,7 @@ export const contentData: ContentItem[] = [
       {
         id: "3-7",
         title:
-          "Design Thinking Tasarım Odaklı Düşünme - Ara Deneme Sınavı (2)",
+          "Bilişsel Süreç Takibi - Sınav",
         type: "exam",
         typeLabel: "Sınav",
         duration: "10 dk",

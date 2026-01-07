@@ -64,10 +64,10 @@ export function CertificateModal({ isOpen, onClose }: CertificateModalProps) {
               {/* Course Details */}
               <div className="space-y-3 py-4">
                 <p className="text-xl text-gray-700">
-                  <span className="font-semibold">Design Thinking</span> eğitimini
+                  <span className="font-semibold">Kurumlarda Bilişsel Becerileri Geliştirme</span>
                 </p>
                 <p className="text-xl text-gray-700">
-                  başarıyla tamamladığı için
+                eğitimini başarıyla tamamladığı için
                 </p>
               </div>
 

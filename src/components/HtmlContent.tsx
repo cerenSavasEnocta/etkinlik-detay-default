@@ -29,63 +29,27 @@ export function HtmlContent({ onComplete }: HtmlContentProps) {
       >
         <div className="prose max-w-none">
           <h2 className="text-gray-900 mb-4">
-            Html başlık stili
+            Doğru Hedefleri Belirleme ve Uygun Araçları Kullanma
           </h2>
 
+          <p className="mb-4">
+          Bu süreç; çalışanlar için ölçülebilir ve sistematik bir güçlendirmeyi amaçlayarak aşağıdaki <strong>yetkinlikleri</strong> hedef alır:
+          </p>
+
           <ul className="list-disc pl-5 mb-4 space-y-1">
-            <li>Html unordered list stili</li>
-            <li>Html unordered list stili</li>
-          </ul>
-
-          <ol className="list-decimal pl-5 mb-4 space-y-1">
-            <li>Html ordered list stili</li>
-            <li>Html ordered list stili</li>
-          </ol>
-
-          <p className="mb-4">
-            Soldan sağa regular yazı. Soldan sağa regular yazı.
-            Soldan sağa regular yazı. Soldan sağa regular yazı.
-            Soldan sağa regular yazı. Soldan sağa regular yazı.
-            Soldan sağa regular yazı. Soldan sağa regular yazı.
-          </p>
+            <li>Dikkat</li>
+            <li>Algı</li>
+            <li>Hafıza</li>
+            <li>Analitik Düşünme</li>
+            <li>Problem Çözme</li>
+            <li>Karar Verme</li>
+          </ul>          
 
           <p className="mb-4">
-            <strong>Bold yazı:</strong> Underline yazı
-            <br />
-            <span className="line-through">
-              Line-through yazı
-            </span>
+          Kurumsal öğrenme yaklaşımlarında bilişsel beceriler, yalnızca bireysel gelişimi destekleyen unsurlar olarak değil, aynı zamanda <span className="underline">organizasyonel verimliliği ve rekabet gücünü artıran stratejik bir yatırım</span> alanı olarak ele alınır.
           </p>
 
-          <p className="mb-4 uppercase">UPPERCASE YAZI</p>
-
-          <p
-            className="mb-4"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
-            Yazının font stilini farklı seçilebilir olabilir
-          </p>
-
-          <p className="mb-4">
-            <span className="bg-gray-200 px-1">
-              Çok eğitiyordu
-            </span>{" "}
-            <span className="text-blue-600">
-              farklı bir renk seçili
-            </span>
-          </p>
-
-          <p className="mb-4">
-            <a href="#" className="text-blue-600 underline">
-              Bağlı link eklenmiştir
-            </a>
-          </p>
-
-          <p className="mb-4">
-            <a href="#" className="text-blue-600 underline">
-              İsteğimize bağlı link underline da yapılabilir
-            </a>
-          </p>
+          
 
           <div className="mb-4">
             <img
@@ -97,19 +61,13 @@ export function HtmlContent({ onComplete }: HtmlContentProps) {
 
           <p className="mb-4">
             <a href="#" className="text-blue-600">
-              like_.._okuturma.pdf
+              Bilissel_Becerileri_Gelistirme.pdf
             </a>
           </p>
 
           <p className="mb-4">
             <a href="#" className="text-blue-600">
-              tasarim_.._odakli_.._dusunmenin_.._asamalari.pdf
-            </a>
-          </p>
-
-          <p className="mb-4">
-            <a href="#" className="text-blue-600">
-              amaclar_.._ve_.._araclar.pdf
+              Organizasyonel_Verimlilik_ve_Rekabet_Gucu.pdf
             </a>
           </p>
         </div>

@@ -44,7 +44,7 @@ export function PodcastPlayer({ onComplete }: PodcastPlayerProps) {
     if (!isAPIReady || !containerRef.current || playerRef.current) return;
 
     playerRef.current = new window.YT.Player("podcast-youtube-player", {
-      videoId: "iAZfXx_v9Tg",
+      videoId: "2IEoOBXwgN0",
       playerVars: {
         autoplay: 0,
         controls: 1,

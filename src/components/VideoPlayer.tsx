@@ -44,7 +44,7 @@ export function VideoPlayer({ onComplete }: VideoPlayerProps) {
     if (!isAPIReady || !containerRef.current || playerRef.current) return;
 
     playerRef.current = new window.YT.Player("youtube-player", {
-      videoId: "_46a4va40Ns",
+      videoId: "LypPT2I6xPU",
       playerVars: {
         autoplay: 0,
         controls: 1,
