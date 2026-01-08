@@ -5,6 +5,7 @@ import { MainContent } from "./components/MainContent";
 import { OverviewPanel } from "./components/OverviewPanel";
 import { AutoplayWidget } from "./components/AutoplayWidget";
 import { SuccessPage } from "./components/SuccessPage";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./components/ui/dialog";
 
 type SidebarState = "content-tree" | "overview" | null;
 type ContentType = 'video' | 'html' | 'virtual-class' | 'podcast' | 'classroom' | 'elearning' | 'task' | 'file' | 'exam';
@@ -66,6 +67,7 @@ export default function App() {
   const [showSuccessPage, setShowSuccessPage] = useState(false);
   const [hasRated, setHasRated] = useState(false);
   const [hasBookmarked, setHasBookmarked] = useState(false);
+  const [showPrototypeInfo, setShowPrototypeInfo] = useState(false);
   
   // Autoplay ayarını localStorage'dan oku
   const [autoplayEnabled, setAutoplayEnabled] = useState(() => {
@@ -183,6 +185,34 @@ export default function App() {
           totalTime="2:59:05"
         />
       )}
+      {/* Prototype Info Modal (when exam result clicked but all contents not completed) */}
+      {showPrototypeInfo && (
+        <Dialog open={showPrototypeInfo} onOpenChange={setShowPrototypeInfo}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-center">
+                Prototip Bilgilendirme
+              </DialogTitle>
+              <DialogDescription className="text-center pt-2">
+                burası prototip'in son aşamasıdır. tüm içerikleri tamamladığında burada sana bir sürprizimiz olacak 🌟
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={() => setShowPrototypeInfo(false)}
+                className="px-6 py-2 rounded transition-colors"
+                style={{
+                  backgroundColor: "#000",
+                  color: "#fff",
+                  cursor: "pointer",
+                }}
+              >
+                Tamam
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
 
       <div className="flex flex-col h-screen bg-gray-50 overflow-y-auto">
         <Header
@@ -226,7 +256,13 @@ export default function App() {
             onContentComplete={() => handleContentComplete(currentContentId)}
             currentContentId={currentContentId}
             completedContents={completedContents}
-            onExamResult={() => setShowSuccessPage(true)}
+            onExamResult={() => {
+              if (isAllCompleted) {
+                setShowSuccessPage(true);
+              } else {
+                setShowPrototypeInfo(true);
+              }
+            }}
           />
         </div>
 
