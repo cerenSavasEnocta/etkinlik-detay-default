@@ -1,15 +1,7 @@
 import image_8a05e1e9c1e300378041b71bf9fd5cb72dceebdb from "@/assets/8a05e1e9c1e300378041b71bf9fd5cb72dceebdb.png";
 import image_87e256ae2ae691babc472a7d346f958e82e4c6f6 from "@/assets/87e256ae2ae691babc472a7d346f958e82e4c6f6.png";
 import { useState } from "react";
-import {
-  Star,
-  Bookmark,
-  CheckCircle2,
-  Linkedin,
-  ArrowLeft,
-  Clock,
-  Users,
-} from "lucide-react";
+import { Star, CheckCircle2, Linkedin, ArrowLeft, Clock, Users } from "lucide-react";
 import { MdStar } from "react-icons/md";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { RatingModal } from "./RatingModal";
@@ -46,19 +38,7 @@ export function SuccessPage({
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [showThankYouModal, setShowThankYouModal] =
     useState(false);
-  const [bookmarkedCourses, setBookmarkedCourses] = useState<
-    Set<number>
-  >(new Set());
-
-  const toggleBookmark = (courseIndex: number) => {
-    const newSet = new Set(bookmarkedCourses);
-    if (newSet.has(courseIndex)) {
-      newSet.delete(courseIndex);
-    } else {
-      newSet.add(courseIndex);
-    }
-    setBookmarkedCourses(newSet);
-  };
+  // Bookmark özelliği kaldırıldı
 
   const handleRatingClick = () => {
     if (!hasRated) {
@@ -423,21 +403,7 @@ export function SuccessPage({
                         </span>
                       </div>
                     </div>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleBookmark(course.id);
-                      }}
-                      className="absolute bottom-2 right-2 p-1.5"
-                    >
-                      <Bookmark
-                        className={`w-4 h-4 ${
-                          bookmarkedCourses.has(course.id)
-                            ? "fill-black text-black"
-                            : "text-gray-400"
-                        }`}
-                      />
-                    </button>
+                    {/* Bookmark ikonu kaldırıldı */}
                   </div>
                 ))}
               </div>
