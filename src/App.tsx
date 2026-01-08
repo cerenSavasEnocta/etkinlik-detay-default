@@ -193,7 +193,6 @@ export default function App() {
               <DialogTitle className="text-center">Merhaba 👋</DialogTitle>
               <DialogDescription className="text-center pt-2">
                 <div>
-                  <p>Merhaba 👋</p>
                   <p style={{ marginTop: "8px" }}>
                     Burası prototip'in son aşamasıdır. Tüm içerikleri
                     tamamladığında burada sana bir sürprizimiz olacak 🌟
