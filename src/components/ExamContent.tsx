@@ -47,9 +47,6 @@ export function ExamContent({ onComplete, onShowResult }: ExamContentProps) {
         style={{
           maxWidth: "1100px",
           width: "100%",
-          maxHeight: "77vh",
-          minHeight: "77vh",
-          overflowY: "auto",
           paddingTop: "24px",
         }}
       >
