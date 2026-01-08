@@ -442,20 +442,20 @@ export function ContentTree({
                           Eğitimi nasıl tamamlayabilirim?
                         </h4>
                         <div className="flex items-start gap-2">
-                      <span
+                          <span
                             className="material-symbols-rounded flex-shrink-0"
                             style={{
                               fontSize: "18px",
-                          color:
+                              color:
                             (allCompleted || completedVideos >= 1)
-                              ? "#68D48D"
-                              : "#EF4444",
+                                  ? "#68D48D"
+                                  : "#EF4444",
                               fontVariationSettings: "'FILL' 1",
                             }}
                           >
                         {(allCompleted || completedVideos >= 1)
-                          ? "check_circle"
-                          : "cancel"}
+                              ? "check_circle"
+                              : "cancel"}
                           </span>
                           <p
                             className="text-gray-600"
@@ -479,20 +479,20 @@ export function ContentTree({
                           Eğitimi nasıl başarabilirim?
                         </h4>
                         <div className="flex items-start gap-2">
-                      <span
+                          <span
                             className="material-symbols-rounded flex-shrink-0"
                             style={{
                               fontSize: "18px",
-                          color:
+                              color:
                             (allCompleted || completedVideos >= 2)
-                              ? "#68D48D"
-                              : "#EF4444",
+                                  ? "#68D48D"
+                                  : "#EF4444",
                               fontVariationSettings: "'FILL' 1",
                             }}
                           >
                         {(allCompleted || completedVideos >= 2)
-                          ? "check_circle"
-                          : "cancel"}
+                              ? "check_circle"
+                              : "cancel"}
                           </span>
                           <p
                             className="text-gray-600"

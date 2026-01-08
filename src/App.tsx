@@ -190,9 +190,7 @@ export default function App() {
         <Dialog open={showPrototypeInfo} onOpenChange={setShowPrototypeInfo}>
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle className="text-center">
-                Prototip Bilgilendirme
-              </DialogTitle>
+              <DialogTitle className="text-center">Merhaba 👋</DialogTitle>
               <DialogDescription className="text-center pt-2">
                 <div>
                   <p>Merhaba 👋</p>

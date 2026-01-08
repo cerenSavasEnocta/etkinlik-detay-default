@@ -38,36 +38,36 @@ export function TranscriptTab({ showHeader = true }: TranscriptTabProps) {
       <div className="max-w-4xl mx-auto">
       {/* Sayfalama Kontrolleri */}
       {showHeader && (
-        <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-gray-200" style={{ backgroundColor: "#fff", padding: "20px", borderBottom: "none" }}>
-          <button
-            onClick={goToPrevPage}
-            disabled={currentPage === 1}
-            className="p-2 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-600">Sayfa</span>
-            <input
-              type="number"
-              value={currentPage}
-              onChange={handlePageInputChange}
-              min={1}
-              max={totalPages}
-              className="w-12 px-2 py-1 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#cc1f47]"
-            />
-            <span className="text-sm text-gray-600">/ {totalPages}</span>
-          </div>
-
-          <button
-            onClick={goToNextPage}
-            disabled={currentPage === totalPages}
-            className="p-2 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
+      <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-gray-200" style={{ backgroundColor: "#fff", padding: "20px", borderBottom: "none" }}>
+        <button
+          onClick={goToPrevPage}
+          disabled={currentPage === 1}
+          className="p-2 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-gray-600">Sayfa</span>
+          <input
+            type="number"
+            value={currentPage}
+            onChange={handlePageInputChange}
+            min={1}
+            max={totalPages}
+            className="w-12 px-2 py-1 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#cc1f47]"
+          />
+          <span className="text-sm text-gray-600">/ {totalPages}</span>
         </div>
+
+        <button
+          onClick={goToNextPage}
+          disabled={currentPage === totalPages}
+          className="p-2 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
       )}
 
       {/* Transkript İçeriği */}

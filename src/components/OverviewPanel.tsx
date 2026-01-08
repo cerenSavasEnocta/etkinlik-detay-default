@@ -322,22 +322,22 @@ export function OverviewPanel() {
                 2 Saat 40 dakika
               </p>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  <div className="flex">
-                    {[1, 2, 3, 4].map((star) => (
-                      <Star
-                        key={star}
-                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
+              <div className="flex items-center gap-1">
+                <div className="flex">
+                  {[1, 2, 3, 4].map((star) => (
                     <Star
+                      key={star}
                       className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                      style={{ clipPath: "inset(0 10% 0 0)" }}
                     />
-                  </div>
-                  <span className="text-xs text-gray-600">
-                    4.9 (203)
-                  </span>
+                  ))}
+                  <Star
+                    className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                    style={{ clipPath: "inset(0 10% 0 0)" }}
+                  />
+                </div>
+                <span className="text-xs text-gray-600">
+                  4.9 (203)
+                </span>
                 </div>
                 <div
                   className="px-2 py-0.5 rounded"
@@ -378,19 +378,19 @@ export function OverviewPanel() {
                 1 Saat 42 dakika
               </p>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  <div className="flex">
-                    {[1, 2, 3, 4].map((star) => (
-                      <Star
-                        key={star}
-                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
-                    <Star className="w-3 h-3 text-gray-300" />
-                  </div>
-                  <span className="text-xs text-gray-600">
-                    4.2 (156)
-                  </span>
+              <div className="flex items-center gap-1">
+                <div className="flex">
+                  {[1, 2, 3, 4].map((star) => (
+                    <Star
+                      key={star}
+                      className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                    />
+                  ))}
+                  <Star className="w-3 h-3 text-gray-300" />
+                </div>
+                <span className="text-xs text-gray-600">
+                  4.2 (156)
+                </span>
                 </div>
                 <div
                   className="px-2 py-0.5 rounded"
@@ -430,18 +430,18 @@ export function OverviewPanel() {
                 3 Saat 15 dakika
               </p>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star
-                        key={star}
-                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
-                  </div>
-                  <span className="text-xs text-gray-600">
-                    5.0 (89)
-                  </span>
+              <div className="flex items-center gap-1">
+                <div className="flex">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                    />
+                  ))}
+                </div>
+                <span className="text-xs text-gray-600">
+                  5.0 (89)
+                </span>
                 </div>
                 <div
                   className="px-2 py-0.5 rounded"
@@ -481,22 +481,22 @@ export function OverviewPanel() {
                 2 Saat 20 dakika
               </p>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  <div className="flex">
-                    {[1, 2, 3, 4].map((star) => (
-                      <Star
-                        key={star}
-                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
+              <div className="flex items-center gap-1">
+                <div className="flex">
+                  {[1, 2, 3, 4].map((star) => (
                     <Star
+                      key={star}
                       className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                      style={{ clipPath: "inset(0 30% 0 0)" }}
                     />
-                  </div>
-                  <span className="text-xs text-gray-600">
-                    4.7 (312)
-                  </span>
+                  ))}
+                  <Star
+                    className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                    style={{ clipPath: "inset(0 30% 0 0)" }}
+                  />
+                </div>
+                <span className="text-xs text-gray-600">
+                  4.7 (312)
+                </span>
                 </div>
                 <div
                   className="px-2 py-0.5 rounded"
@@ -536,22 +536,22 @@ export function OverviewPanel() {
                 4 Saat 5 dakika
               </p>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  <div className="flex">
-                    {[1, 2, 3, 4].map((star) => (
-                      <Star
-                        key={star}
-                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
+              <div className="flex items-center gap-1">
+                <div className="flex">
+                  {[1, 2, 3, 4].map((star) => (
                     <Star
+                      key={star}
                       className="w-3 h-3 fill-yellow-400 text-yellow-400"
-                      style={{ clipPath: "inset(0 50% 0 0)" }}
                     />
-                  </div>
-                  <span className="text-xs text-gray-600">
-                    4.5 (178)
-                  </span>
+                  ))}
+                  <Star
+                    className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                    style={{ clipPath: "inset(0 50% 0 0)" }}
+                  />
+                </div>
+                <span className="text-xs text-gray-600">
+                  4.5 (178)
+                </span>
                 </div>
                 <div
                   className="px-2 py-0.5 rounded"
