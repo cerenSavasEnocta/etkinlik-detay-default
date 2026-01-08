@@ -69,6 +69,7 @@ export function MainContent({
   onContentComplete,
   currentContentId,
   completedContents,
+  onExamResult,
 }: MainContentProps) {
   const [activeTab, setActiveTab] =
     useState<TabType>("assistant");
@@ -292,21 +293,21 @@ export function MainContent({
             Notlarım
           </button>
           {isTranscriptEnabled && (
-            <button
-              onClick={() => setActiveTab("transcript")}
-              className={`px-1 py-3 border-b-2 transition-colors ${
-                activeTab === "transcript"
-                  ? "border-black text-black"
-                  : "border-transparent text-gray-600 hover:text-gray-900"
-              }`}
-              style={{
-                cursor: "pointer",
-                fontWeight:
-                  activeTab === "transcript" ? 600 : "normal",
-              }}
-            >
-              Transkript/İçerik metni
-            </button>
+          <button
+            onClick={() => setActiveTab("transcript")}
+            className={`px-1 py-3 border-b-2 transition-colors ${
+              activeTab === "transcript"
+                ? "border-black text-black"
+                : "border-transparent text-gray-600 hover:text-gray-900"
+            }`}
+            style={{
+              cursor: "pointer",
+              fontWeight:
+                activeTab === "transcript" ? 600 : "normal",
+            }}
+          >
+            Transkript/İçerik metni
+          </button>
           )}
           <button
             onClick={() => setActiveTab("questions")}
