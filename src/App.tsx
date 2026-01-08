@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { Header } from "./components/Header";
 import { ContentTree, contentData, ContentItem } from "./components/ContentTree";
 import { MainContent } from "./components/MainContent";
@@ -68,6 +68,29 @@ export default function App() {
   const [hasRated, setHasRated] = useState(false);
   const [hasBookmarked, setHasBookmarked] = useState(false);
   const [showPrototypeInfo, setShowPrototypeInfo] = useState(false);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  // Sayfa ilk yüklendiğinde en üste kaydır
+  useEffect(() => {
+    if (scrollRef.current) {
+      try {
+        scrollRef.current.scrollTo({ top: 0, behavior: "auto" });
+      } catch {
+        scrollRef.current.scrollTop = 0;
+      }
+    }
+  }, []);
+
+  // Yeni içeriğe geçildiğinde en üste kaydır
+  useEffect(() => {
+    if (scrollRef.current) {
+      try {
+        scrollRef.current.scrollTo({ top: 0, behavior: "auto" });
+      } catch {
+        scrollRef.current.scrollTop = 0;
+      }
+    }
+  }, [currentContentId, currentContentType]);
   
   // Autoplay ayarını localStorage'dan oku
   const [autoplayEnabled, setAutoplayEnabled] = useState(() => {
@@ -217,7 +240,7 @@ export default function App() {
         </Dialog>
       )}
 
-      <div className="flex flex-col h-screen bg-gray-50 overflow-y-auto">
+      <div className="flex flex-col h-screen bg-gray-50 overflow-y-auto" ref={scrollRef as any}>
         <Header
           onToggleContentTree={toggleContentTree}
           onToggleOverview={toggleOverview}
