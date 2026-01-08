@@ -194,7 +194,13 @@ export default function App() {
                 Prototip Bilgilendirme
               </DialogTitle>
               <DialogDescription className="text-center pt-2">
-                burası prototip'in son aşamasıdır. tüm içerikleri tamamladığında burada sana bir sürprizimiz olacak 🌟
+                <div>
+                  <p>Merhaba 👋</p>
+                  <p style={{ marginTop: "8px" }}>
+                    Burası prototip'in son aşamasıdır. Tüm içerikleri
+                    tamamladığında burada sana bir sürprizimiz olacak 🌟
+                  </p>
+                </div>
               </DialogDescription>
             </DialogHeader>
             <div className="flex justify-center mt-4">
